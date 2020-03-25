@@ -1,2 +1,19 @@
 <h1>Homes#top</h1>
 <p>Find me in app/views/homes/top.html.erb</p>
+<div class="container">
+	<div class="row">
+	<!-- ロゴまたはイラスト挿入 -->
+	<!-- グリッドシステムかul listか、user.indexと統一 -->
+		<section class="login_link">
+			<div class="col">
+				<%= link_to "log in", new_user_session_path, class: "glyphicon glyphicon-download-alt" %>
+			</div>
+			<div class ="col">
+				<%= link_to "Sign up", new_user_registration_path, class: "glyphicon glyphicon-user" %>
+			</div>
+			<div clsss="col">
+	        	<%= link_to "About", homes_about_path, class: "glyphicon glyphicon-user" %>
+	       	</div>
+		</section>
+	</div>
+</div>
