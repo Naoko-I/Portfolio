@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 2020_03_25_092415) do
   end
 
   create_table "blogs", force: :cascade do |t|
-    t.string "title"
     t.string "body"
     t.integer "user_id"
     t.integer "blog_image_id"
