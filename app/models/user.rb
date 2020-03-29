@@ -7,9 +7,9 @@ class User < ApplicationRecord
 
   has_many :blogs, dependent: :destroy
   has_many :blog_comments, dependent: :destroy
-  has_many :favorite, dependent: :destroy
-  has_many :relationship, dependent: :destroy
-
+  has_many :favorites, dependent: :destroy
+  has_many :relationships, dependent: :destroy
+  # has_many :relationships, :foreign_key :following_id, :foreign_key :followed_id, dependent: :destroy
   validates :name, presence: true, length: { minimum: 2,maximum: 20}
-  validates :introduction, length: { maximum: 50}
 end
+

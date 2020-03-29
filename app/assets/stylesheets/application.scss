@@ -23,6 +23,21 @@
    font-family: 'Didot';
 }
 
+/* top.login.signup画面共通　背景画像の設定　*/
+#common-image {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-image: url("claudiu-hegedus-e2jqIApMmNM-unsplash");
+}
+
+
 /* ログイン.サインアップ画面下 */
 /* ↓上下中央寄せ表示ができたら削除 */
 section {
@@ -50,7 +65,7 @@ h1, h5 {
 	opacity: 1.0;
 }
 
-.row {
+.text-space {
 	background-color:rgba(255,255,255,0.6);
 	padding: 15px 20px;
 	width: 750px;
