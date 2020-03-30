@@ -49,19 +49,20 @@ section {
 }
 
 /* aboutページ → 他ページに<p>適用できなければhomes.scssへ移動 */
-p {
-	line-height: 1.8;
-}
-
-h1, h5 {
-  font-weight: bold;
-}
-
 #about {
 	background-image: url("yohann-libot-NgRMY9QcnhE-unsplash.jpg");
 	background-size: cover;
 	width: 100%;
 	opacity: 1.0;
+}
+
+
+h1, h5 {
+  font-weight: bold;
+}
+
+p {
+	line-height: 1.8;
 }
 
 .text-space {
@@ -70,5 +71,7 @@ h1, h5 {
 	width: 750px;
 	height: auto;
 }
+
+
 
 

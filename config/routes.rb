@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get '/homes/about' => 'homes#about'
 
   resources :blogs do
-   resource :favorites, only: [:create, :index, :destroy]
+   resource :favorites, only: [:index, :create, :destroy]
    resource :blog_comments, only: [:new, :create, :edit, :update, :destroy]
    resource :blog_images, only: [:new, :create, :edit, :update, :destroy]
   end
