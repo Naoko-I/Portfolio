@@ -23,6 +23,12 @@
    font-family: 'Didot';
 }
 
+/* ブートストラップのデフォルト変更 */
+a {
+color: #000000;
+text-decoration: none;
+}
+
 /* top.login.signup画面共通　背景画像の設定　*/
 #common-image {
   position: absolute;
@@ -37,15 +43,28 @@
   background-image: image-url("claudiu-hegedus-e2jqIApMmNM-unsplash");
 }
 
+/* linkをつけた場合の文字色 */
+.style-change {
+  color: #fff;
+}
+
 /* ログイン.サインアップ画面下 */
 /* ↓上下中央寄せ表示に変更できたら削除 */
 section {
 	margin-top: 120px;
 }
 
-.form-header-title, .text-center, .form-footer {
+.form-header-title, .text-center {
+  color: #fff;
+  margin-top : 15px;
+  font-size : 30px;
+}
+
+.form-footer {
 	color: #fff;
-	margin-top : 10px;
+	margin-top : 15px;
+  font-size : 20px;
+  line-height: 1.5;
 }
 
 /* aboutページ → 他ページに<p>適用できなければhomes.scssへ移動 */
@@ -55,7 +74,6 @@ section {
 	width: 100%;
 	opacity: 1.0;
 }
-
 
 h1, h5 {
   font-weight: bold;
@@ -72,6 +90,24 @@ p {
 	height: auto;
 }
 
+/* header */
+ header {
+   position: fixed;
+   width: 100%;
+   height: 100px;
+   color: #fff;
+   border-bottom: 1px solid #909090;
+ }
+
+ .logo {
+   margin: 40px 80px;
+ }
+
+ .navbar-right {
+  margin: 40px 80px;
+  position: relative;
+  disply: block;
+}
 
 
 

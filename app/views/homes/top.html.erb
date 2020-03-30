@@ -4,17 +4,16 @@
 	<h1 class="title">Bonheur Chocolat</h1>
 	<ul class="nav-link">
 		<li>
-			<%= link_to "Login", new_user_session_path %>
+			<%= link_to "Login", new_user_session_path, class: "style-change" %>
 		</li>
 		<li>
-			<%= link_to "Signup", new_user_registration_path %>
+			<%= link_to "Signup", new_user_registration_path, class: "style-change"  %>
 		</li>
 		<li>
-        	<%= link_to "About", homes_about_path, class: "glyphicon glyphicon-user" %>
+        	<%= link_to "About", homes_about_path, class: "style-change" %>
        	</li>
 	</ul>
-	<!-- エラー回復後削除 -->
+	<!-- 作成段階　ページ遷移用 -->
     <%= link_to "User.index", users_path %>
-
 </div>
 </body>
