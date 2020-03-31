@@ -2,20 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-/* topページ　*/
-.title {
-  margin-top: 250px;
-  text-align: center;
-  font-size: 50px;
-  font-weight: bold;
+li {
+  margin-top: 5px;
+  font-size: 25px;
   color: #fff;
+  text-align: center;
+  display: block;
 }
 
-li {
-	margin-top: 5px;
-	font-size: 25px;
-	color: #fff;
-	text-align: center;
-	display: block;
-}
 

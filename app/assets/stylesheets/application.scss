@@ -33,6 +33,15 @@ a {
   text-decoration: none;
 }
 
+/* topページ　*/
+.title {
+  margin-top: 250px;
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
+  color: #fff;
+}
+
 /* top.login.signup画面共通　背景画像の設定　*/
 #common-image {
   position: absolute;
@@ -95,9 +104,9 @@ header {
   height: 100px;
   padding: 5px 20px;
   position: fixed;
+  color: #fff;
   background-image: image-url("kaffee-meister-XhWntGj2N98-unsplash.jpg");
   background-size: cover;
-  color: #fff;
  }
 
 .logo {
@@ -118,8 +127,8 @@ header {
  }
 
 .serch {
-  float : left;
   display: inline-block;
+  float : left;
   padding: 25px 380px;
  }
 

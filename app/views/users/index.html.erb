@@ -1,7 +1,6 @@
 <header>
   <!-- <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top"> -->
   <h3 class="logo"><%= link_to "logo", root_path %></h3>
-
   <!-- 検索窓///検索機能実装未 -->
   <div class="navbar-center">
     <div class="serch">
@@ -30,9 +29,80 @@
       </li>
       <li>
         <%= link_to "", user_path(current_user), class: "glyphicon glyphicon-heart-empty"%>
-        <%#= attachment_image_tag profile_image_id.current_user, :profile_image, size:'20x20', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
+        <%#= attachment_image_tag profile_image.current_user, :profile_image, size:'20x20', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
       </li>
     </ul>
     <!-- </div> -->
 </header>
 <!-- ここまでheader -->
+
+<main class="clearfix">
+    <!-- 新着順に表示 -->
+    <div class="newly-arriving-blog">
+        <div class="blog-box">
+          <% blogs.each do |blog| %>
+            <div class="blog-item clearfix">
+                    <%#= attachment_image_tag blog.image, :image, size:'100x100', format: 'jpeg', fallback: 'no_image.jpg', size:'100x100' %>
+              <section class="blog-body">
+                <%#= blog.body %>
+                <!-- 追加機能///投稿日時実装の場合ここに表示（CARAVAN参考)-->
+              </section>
+            </div>
+          <% end %>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <div class="sidebar-right">
+            <ul class="current-user-profile">
+               <!-- <li> -->
+               <%#= link_to user_path(user) do %>
+               <%#= attachment_image_tag current_user.(profile_)image, :image, size:'50x50', format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
+               <!-- </li> -->
+                <li>
+                  <%= current_user.name %>
+                </li>
+            </ul>
+        <!-- following_user一覧 -->
+        <div crass="user-list">
+            <section class="list-box">
+                <h4 class ="list-heading">
+                    <span>フォロー中</span>
+                    <span><%#= link_to "すべて見る", #followings_index_path %></span>
+                </h4>
+                <% followings.each do |following| %>
+                    <ul>
+                        <li>
+                            <%#= link_to following_user_path(user) do %>
+                            <%#= attachment_image_tag current_user.(profile_)image, :image, size:'50x50', format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
+                        </li>
+                        <li>
+                          <%#= following_user.name %>
+                        </li>
+                    </ul>
+                <% end %>
+            </section>
+        </div>
+        <!-- followed_user一覧 -->
+        <div crass="user-list">
+            <section class="list-box">
+                <h4 class ="list-heading">
+                    <span>フォロワー</span>
+                    <span><%#= link_to "すべて見る", #followed_index_path %></span>
+                </h4>
+                <% followeds.each do |followed| %>
+                    <ul>
+                        <li>
+                            <%#= link_to followed_user_path(user) do %>
+                            <%#= attachment_image_tag user.image, :image, size:'50x50', format: 'jpeg', fallback: 'no_image.jpg', size:'50x50' %>
+                        </li>
+                        <li>
+                          <%#= followed_user.name %>
+                        </li>
+                    </ul>
+                <% end %>
+            </section>
+        </div>
+    </div>
+</main>
+
