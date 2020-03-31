@@ -1,45 +1,38 @@
 <header>
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-      <%= link_to "logo", root_path %>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <!-- <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top"> -->
+  <h3 class="logo"><%= link_to "logo", root_path %></h3>
 
+  <!-- 検索窓///検索機能実装未 -->
+  <div class="navbar-center">
+    <div class="serch">
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-          <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+          <!-- 虫眼鏡アイコンに変更したい -->
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
-
-      <div class="navbar nav-right">
-        <ul class="navbar-nav link">
-          <li class="nav-item">
-            <%= link_to "", users_path, class: "glyphicon glyphicon-home" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "", new_blog_path, class: "fa fa-paper-plane" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "", user_favorites_path(current_user), class: "glyphicon glyphicon-heart-empty" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "", user_path(current_user), class: "glyphicon glyphicon-heart-empty"%>
-            <%#= attachment_image_tag profile_image_id.current_user, :profile_image, size:'20x20', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
-          </li>
-        </ul>
-      </div>
-    </nav>
-</header>
-
-  <!-- <div class="navbar navbar-center"> -->
-    <!-- 検索窓///実装の場合コード編集必要 -->
-    <!-- <ul> -->
-	  <!-- <li> -->
         <%#= form_for( Genre.new, url: items_path, method: :get ) do | f | %>
         <%#= f.text_field :name, style: 'border: none; color: gray; margin-left: 8px;', placeholder: "検索" %>
       <!-- ↓↓検索マーク(glyphicon glyphicon-search)にlinkつけられるか?? -->
         <%#= f.submit 'serch', class: 'glyphicon glyphicon-search', style: 'border: none; color: black;' %>
         <%# end %>
-      <!-- </li> -->
-    <!-- </ul> -->
-
+    </div>
+  </div>
+  <!-- <div class="nav-right"> -->
+    <ul class="navber-link">
+      <li>
+        <%= link_to "", users_path, class: "glyphicon glyphicon-home" %>
+      </li>
+      <li>
+        <%= link_to "", new_blog_path, class: "fa fa-paper-plane" %>
+      </li>
+      <li>
+        <%= link_to "", user_favorites_path(current_user), class: "glyphicon glyphicon-heart-empty" %>
+      </li>
+      <li>
+        <%= link_to "", user_path(current_user), class: "glyphicon glyphicon-heart-empty"%>
+        <%#= attachment_image_tag profile_image_id.current_user, :profile_image, size:'20x20', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
+      </li>
+    </ul>
+    <!-- </div> -->
+</header>
 <!-- ここまでheader -->

@@ -17,16 +17,20 @@
  @import "bootstrap";
 
 * {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
-   font-family: 'Didot';
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Didot';
+}
+
+.kari {
+  color: red;
 }
 
 /* ブートストラップのデフォルト変更 */
 a {
-color: #000000;
-text-decoration: none;
+  color: #fff;
+  text-decoration: none;
 }
 
 /* top.login.signup画面共通　背景画像の設定　*/
@@ -41,11 +45,6 @@ text-decoration: none;
   background-position: center;
   background-size: contain;
   background-image: image-url("claudiu-hegedus-e2jqIApMmNM-unsplash");
-}
-
-/* linkをつけた場合の文字色 */
-.style-change {
-  color: #fff;
 }
 
 /* ログイン.サインアップ画面下 */
@@ -91,23 +90,40 @@ p {
 }
 
 /* header */
- header {
-   position: fixed;
-   width: 100%;
-   height: 100px;
-   color: #fff;
-   border-bottom: 1px solid #909090;
+header {
+  position: fixed;
+  width: 100%;
+  height: 100px;
+  background-color: #351300;
+  border-bottom: 1px solid #909090;
+  padding: 5px 20px;
+  color: #fff;
  }
 
- .logo {
-   margin: 40px 80px;
+.logo {
+  display: inline-block;
+  float: left;
+  padding: 0 30px;
+  font-size: 36px;
+  color: #fff;
  }
 
- .navbar-right {
-  margin: 40px 80px;
-  position: relative;
-  disply: block;
-}
+.navbar-link {
+  float: left;
+ }
+
+.navber-link li {
+  float: left;
+  padding: 25px 20px;
+ }
+
+.serch {
+  float : left;
+  display: inline-block;
+  padding: 25px 380px;
+ }
+
+
 
 
 
