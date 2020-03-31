@@ -1,46 +1,10 @@
-<header>
-  <!-- <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top"> -->
-  <h3 class="logo"><%= link_to "logo", root_path %></h3>
-  <!-- 検索窓///検索機能実装未 -->
-  <div class="navbar-center">
-    <div class="serch">
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-          <!-- 虫眼鏡アイコンに変更したい -->
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-        <%#= form_for( Genre.new, url: items_path, method: :get ) do | f | %>
-        <%#= f.text_field :name, style: 'border: none; color: gray; margin-left: 8px;', placeholder: "検索" %>
-      <!-- ↓↓検索マーク(glyphicon glyphicon-search)にlinkつけられるか?? -->
-        <%#= f.submit 'serch', class: 'glyphicon glyphicon-search', style: 'border: none; color: black;' %>
-        <%# end %>
-    </div>
-  </div>
-  <!-- <div class="nav-right"> -->
-    <ul class="navber-link">
-      <li>
-        <%= link_to "", users_path, class: "glyphicon glyphicon-home" %>
-      </li>
-      <li>
-        <%= link_to "", new_blog_path, class: "fa fa-paper-plane" %>
-      </li>
-      <li>
-        <%= link_to "", user_favorites_path(current_user), class: "glyphicon glyphicon-heart-empty" %>
-      </li>
-      <li>
-        <%= link_to "", user_path(current_user), class: "glyphicon glyphicon-heart-empty"%>
-        <%#= attachment_image_tag profile_image.current_user, :profile_image, size:'20x20', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
-      </li>
-    </ul>
-    <!-- </div> -->
-</header>
-<!-- ここまでheader -->
+<%= render 'users/header' %>
 
 <main class="clearfix">
     <!-- 新着順に表示 -->
     <div class="newly-arriving-blog">
         <div class="blog-box">
-          <% blogs.each do |blog| %>
+          <% @blogs.each do |blog| %>
             <div class="blog-item clearfix">
                     <%#= attachment_image_tag blog.image, :image, size:'100x100', format: 'jpeg', fallback: 'no_image.jpg', size:'100x100' %>
               <section class="blog-body">

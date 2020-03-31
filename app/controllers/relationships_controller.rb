@@ -1,7 +1,9 @@
 class RelationshipsController < ApplicationController
-  def following
+  def index
   end
 
-  def followed
+  def create
   end
+
+  def destroy
 end

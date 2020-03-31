@@ -1,5 +1,26 @@
+<header>
+  	<nav class="navbar navbar-left">
+	    <h3 class="logo">
+	      <%= link_to "logo", users_path %>
+	    </h3>
+	</nav>
+	<!-- フォント小さくしたいのに適用されない -->
+    <nav class="navbar navbar-right">
+	    <ul class="navber-link">
+	      <li>
+	        <%= link_to "Top", users_path %>
+	      </li>
+	      <li>
+	        <%= link_to "Log in", new_blog_path %>
+	      </li>
+	      <li>
+	        <%= link_to "Sign up", user_favorites_path(current_user) %>
+	      </li>
+	    </ul>
+	</nav>
+</header>
+<!-- 背景画像の呼び出し -->
 <body id="about">
-<!-- 部分テンプレートでheaderをここに配置 -->
 	<div class="container">
 		<div class="row">
 			<section class="text-space">
@@ -8,7 +29,9 @@
 				<div class="text-body">
 					<div class="col-md-12">
 						<h5>~ チョコレート好きのための『チョコレート図鑑』~</h5>
-						<p class="text-detail">チョコレートの発祥の地ベルギーではかつて、「神の食べ物＝テオブロマ・カカオ」と呼ばれていたチョコレート。味だけでなく、「幸せの香り」とも言われるカカオの香りも魅力的。<br>香りとほろ苦さが魅力のビターチョコ、ほんのり甘いミルクチョコ、やさしくとろけるホワイトチョコ。<br>なめらかにとろける生チョコ、ナッツやフルーツ、フレーバー…。チョコレートの種類は数えきれない程。<br>『Bonheur Chocolat』はチョコレートの基本的な種類やおすすめブランド、チョコに関するレビューを閲覧/共有できるサイトです。</p>
+						<p class="text-detail">
+							チョコレートの発祥の地ベルギーではかつて、「神の食べ物＝テオブロマ・カカオ」と呼ばれていたチョコレート。味だけでなく、「幸せの香り」とも言われるカカオの香りも魅力的。<br>香りとほろ苦さが魅力のビターチョコ、ほんのり甘いミルクチョコ、やさしくとろけるホワイトチョコ。<br>なめらかにとろける生チョコ、ナッツやフルーツ、フレーバー…。チョコレートの種類は数えきれない程。<br>『Bonheur Chocolat』はチョコレートの基本的な種類やおすすめブランド、チョコに関するレビューを閲覧/共有できるサイトです。
+						</p>
 					</div>
 				</div>
 			</section>
