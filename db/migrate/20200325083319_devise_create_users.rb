@@ -3,6 +3,10 @@
 class DeviseCreateUsers < ActiveRecord::Migration[5.2]
   def change
     create_table :users do |t|
+      #ここ！
+      #t.references :following, foreign_key: { to_table: :usersかrelationships? }
+      #t.references :followed, foreign_key: { to_table: :usersかrelationships? }
+
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""

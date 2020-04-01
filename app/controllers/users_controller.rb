@@ -4,6 +4,10 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @blogs = Blog.all
+    @user = current_user
+    @followings = @user.following_user.all
+    @folloewds = @user.followed_user.all
+    # @user = User.find(params[:id])
   end
 
   def show

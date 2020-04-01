@@ -8,8 +8,8 @@ Rails.application.routes.draw do
    resource :blog_images, only: [:new, :create, :edit, :update, :destroy]
   end
 
-  #get '/relationships/index' => 'following#index'
-  #get '/relationships/index' => 'followed#index'
+  get '/relationships/following' => 'relationships#following'
+  get '/relationships/followed' => 'relationships#followed'
   #if文で場合分けできる？<%= if following_userなら「フォローを外す」→「外しますか？メッセージ表示、else「フォローする」%> if followerdなら「followする」→followingへ移動
   #get '/relationships/show' => 'relationships#show'
 

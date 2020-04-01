@@ -1,10 +1,11 @@
 <header>
-  <!-- <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top"> -->
+  <nav class="navbar navbar-left">
     <h3 class="logo">
       <%= link_to "logo", users_path %>
     </h3>
+  </nav>
   <!-- 検索窓///検索機能実装未 -->
-    <div class="navbar-center">
+    <nav class="navber navbar-center">
         <div class="serch">
             <form class="form-inline my-2 my-lg-0">
                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
@@ -17,8 +18,9 @@
             <%#= f.submit 'serch', class: 'glyphicon glyphicon-search', style: 'border: none; color: black;' %>
             <%# end %>
         </div>
-    </div>
-  <!-- <div class="nav-right"> -->
+    </nav>
+
+  <nav class="navbar nav-right">
     <ul class="navber-link">
       <li>
         <%= link_to "", users_path, class: "glyphicon glyphicon-home" %>
@@ -34,5 +36,5 @@
         <%#= attachment_image_tag profile_image.current_user, :profile_image, size:'20x20', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
       </li>
     </ul>
-    <!-- </div> -->
+  </nav>
 </header>
