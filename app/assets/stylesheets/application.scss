@@ -133,11 +133,20 @@ header {
 }
 
 /* user.index  未設定width,height,margin,padding、containerとrowのmarginどうするか,,,aboutページにもかかっちゃう*/
-
 .blog-box, user-list-box {
   border: 1px solid #C0C0C0;
 }
 
+/* user.show */
+.profile-list {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 18px;
+}
+
+.profile-image {
+  pagddin-top: 30px;
+}
 
 
 

@@ -1,26 +1,38 @@
 <%#= render 'users/header' %>
-<main id="content">
-	<div class="user-image">
-		<%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
-	</div>
-	<div class="user-name">
-			<ul>
-				<li><%= @user.name %></li>
-				<% if @user.id == current_user.id %>
-				<li>
-					<%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-default" %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-offset-3 col-md-1">
+			<%= attachment_image_tag @user, :profile_image, size:"120x120", format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
+		</div>
+		<div class="col-md-offset-1 col-md-6">
+			<div class="user-profile">
+				<ul>
+					<li class="profile-list">
+					  <h1><%= @user.name %></h1>
+					</li>
+				  	<li class="profile-list">
+				      <% if @user.id == current_user.id %>
+					  <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-default" %>
+					  <% end %>
+				    </li>
+				</ul>
+			</div>
+			<div class="user-info">
+				<ul>
+				  <li class="profile-list">投稿<%= @user.blogs.count %>件</li>
+				  <li class="profile-list">フォロワー<%= @user.followings.count %>人</li>
+				  <li class="profile-list">フォロー中<%#= @user.followeds.count %>人</li>
+				</ul>
+			</div>
+			<div class="user-wirhdraw">
+				<li class="profile-list">
+				  <%= link_to "退会", users_withdraw_path(@user), class: "btn btn-default", "data-confirm" => "本当に退会しますか？" %>
 				</li>
-				<% end %>
-			</ul>
+			</div>
+		</div>
 	</div>
-	<section class="user-info">
-		<ul>
-		  <li>投稿<%#= @user.blogs.count %>件</li>
-		  <li>フォロワー<%#= @user.following.count %>人</li>
-		  <li>フォロー中<%#= @user.followed.count %>人</li>
-		</ul>
-	</section>
-</main>
+</div>
 
 
 
