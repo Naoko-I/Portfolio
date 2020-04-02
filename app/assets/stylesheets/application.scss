@@ -102,38 +102,23 @@ p {
 	height: 300px;
 }
 
-.test {
-  font-size: 3px;
-}
-
 /* header */
 header {
   width: 100%;
   height: 100px;
-  padding: 5px 20px;
+  padding: 5px 40px;
   position: fixed;
   color: #fff;
   background-image: image-url("kaffee-meister-XhWntGj2N98-unsplash");
   background-size: cover;
  }
 
-.logo {
+.navbar-logo {
   display: inline-block;
   float: left;
-  padding: 0 30px;
+  padding: 20px 30px;
   font-size: 36px;
   color: #fff;
- }
-
-.navbar-link {
-  float: left;
-  color: #fff;
- }
-
-.navbar-link li {
-  float: left;
-  color: #fff;
-  padding: 25px 20px;
  }
 
 .serch {
@@ -141,6 +126,11 @@ header {
   float : left;
   padding: 25px 380px;
  }
+ /* ↓↓適用されていない。。。*/
+.navbar-right {
+  padding-top: 20px;
+  color: #fff;
+}
 
 
 
