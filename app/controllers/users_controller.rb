@@ -6,7 +6,8 @@ class UsersController < ApplicationController
     @blogs = Blog.all
     @user = current_user
     @followings = @user.followings
-    @folloewds = @user.followeds
+    @followeds = @user.followeds
+    @blog_comment = BlogComment.new
   end
 
   def show

@@ -1,80 +1,120 @@
 <%= render 'users/header' %>
 
-<main class="clearfix">
-    <!-- 新着順に表示 -->
-    <div class="newly-arriving-blog">
-        <% @blogs.each do |blog| %>
-            <div class="blog-box">
-                <div class="blog-item clearfix">
-                    <div class="blog-headline">
-                        <%= attachment_image_tag blog.user, :profile_image, size:'100x100', format: 'jpeg', fallback: 'no_image.jpg', size:'100x100' %>
-                        <%= blog.user.name %>
+<div class="container">
+    <!-- <main class="clearfix"> -->
+        <!-- 新着順に表示 -->
+        <div class="row">
+            <div class="col-md-offset-2 col-md-6">
+                <div class="newly-arriving-blog">
+                    <% @blogs.each do |blog| %>
+                        <div class="blog-box">
+                            <section class="blog-item clearfix">
+                                <div class="blog-headline">
+                                    <%= link_to(blog.user) do %>
+                                        <%= attachment_image_tag blog.user, :profile_image, size:'40x40', format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
+                                        <%= blog.user.name %>
+                                    <% end %>
+                                </div>
+                                <div class="blog-image">
+                                    <%= attachment_image_tag blog, :image, size:'100x100', format: 'jpeg', fallback: 'no_image.jpg', size:'100x100' %>
+                                </div>
+                                <div class="blog-box heading has-icon">
+                                    <!-- 追加実装//facebook参考に各iconのカウント数表示 -->
+                                    <ul class="blog-icon">
+                                        <li>
+                                          <%= link_to "", user_favorites_path(current_user), class: "glyphicon glyphicon-heart-empty" %>
+                                        </li>
+                                        <li>
+                                          <%= link_to "", blog_path(blog), class: "far fa-comment" %>
+                                        </li>
+                                        <!--非同期で色が変わるのみ、そのままBookmark一覧(create)にblogが追加される  -->
+                                        <li>
+                                          <i class="far fa-bookmark"></i>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="blog-body">
+                                    <%= blog.body %>
+                                </div>
+                                <!-- 追加機能//blog投稿日時実装の場合ここに <p class="blog-date">June 17, 2017</p> -->
+                                 <!-- 非同期で新規コメント入力機能追加 -->
+                                <div class="new-comment-form">
+                                    <%= form_for [@blog, @blog_comment] do |f| %>
+                                    <%= f.text_area :comment, size: "90x5" %>
+                                    <%= f.submit '投稿する' %>
+                                    <% end %>
+                                </div>
+                            </section>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+
+            <div class="col-md-offset-1 col-md-3">
+                <div class="sidebar">
+                    <div class="sidebar-right">
+                        <div class="sidebar-heading">
+                            <ul class="current-user-profile">
+                                <li>
+                                  <%= link_to user_path(current_user) do %>
+                                  <%= attachment_image_tag current_user, :profile_image, size:'50x50', format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
+                                </li>
+                                <li>
+                                  <%= current_user.name %>
+                                  <% end %>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                    <section class="blog-body">
-                        <%= attachment_image_tag blog :image, size:'100x100', format: 'jpeg', fallback: 'no_image.jpg', size:'100x100' %>
-                        <%= blog.body %>
-                    <!-- 追加機能///投稿日時実装の場合ここに-->
+                <!-- following_user一覧 -->
+                    <section class="user-list-box">
+                        <div crass="following-user-list">
+                            <ul class ="list-heading">
+                                <li>フォロー中</li>
+                                <li><%= link_to "すべて見る", relationships_following_path %></li>
+                            </ul>
+                        </div>
+                        <div class="following-user-list">
+                            <% @followings.each do |following| %>
+                                <ul>
+                                    <li>
+                                      <%= link_to user_path(following) do %>
+                                      <%= attachment_image_tag current_user.following, :profile_image, size:'50x50', format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
+                                      <% end %>
+                                    </li>
+                                    <li>
+                                      <%= current_user.following.name %>
+                                    </li>
+                                </ul>
+                            <% end %>
+                        </div>
+                    </section>
+                <!--  followed_user一覧 -->
+                    <section class="user-list-box">
+                        <div class="followed-user">">
+                            <ul class ="list-heading">
+                                <li>フォロワー</li>
+                                <li><%= link_to "すべて見る", relationships_followed_path %></li>
+                            </ul>
+                        </div>
+                        <div class="followed-user-list">
+                            <% @followeds.each do |followed| %>
+                                <ul>
+                                    <li>
+                                      <%= link_to user_path(followed) do %>
+                                      <%= attachment_image_tag current_user.followed, :profile_image, size:'50x50', format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
+                                      <% end %>
+                                    </li>
+                                    <li>
+                                      <%= current_user.followed.name %>
+                                    </li>
+                                </ul>
+                            <% end %>
+                        </div>
                     </section>
                 </div>
             </div>
-        <% end %>
-    </div>
-
-    <div class="sidebar">
-        <div class="sidebar-right">
-            <ul class="current-user-profile">
-                <li>
-                  <%= link_to user_path(current_user) do %>
-                  <%= attachment_image_tag current_user, :profile_image, size:'50x50', format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
-                  <% end %>
-                </li>
-                <li>
-                  <%= current_user.name %>
-                </li>
-            </ul>
-        <!-- following_user一覧 -->
-            <section class="list-box">
-                <div crass="following-user-list">
-                    <ul class ="list-heading">
-                        <li>フォロー中</li>
-                        <li><%= link_to "すべて見る", relationships_following_path %></li>
-                    </ul>
-                    <% @followings.each do |following| %>
-                        <ul>
-                            <li>
-                              <%= link_to user_path(following) do %>
-                              <%= attachment_image_tag current_user.following, :profile_image, size:'50x50', format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
-                              <% end %>
-                            </li>
-                            <li>
-                              <%= current_user.following.name %>
-                            </li>
-                        </ul>
-                    <% end %>
-                </div>
-            </section>
-        <!-- followed_user一覧 -->
-            <div crass="user-list">
-                <section class="list-box">
-                    <ul class ="list-heading">
-                        <li>フォロワー</li>
-                        <li><%= link_to "すべて見る", relationships_followed_path %></li>
-                    </ul>
-                    <% @followeds.each do |followed| %>
-                        <ul>
-                            <li>
-                              <%= link_to user_path(followed) do %>
-                              <%= attachment_image_tag current_user.followed, :profile_image, size:'50x50', format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
-                              <% end %>
-                            </li>
-                            <li>
-                              <%= current_user.followed_user.name %>
-                            </li>
-                        </ul>
-                    <% end %>
-                </section>
-            </div>
         </div>
-    </div>
-</main>
+    <!-- </main> -->
+</div>
 
