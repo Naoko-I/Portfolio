@@ -34,6 +34,12 @@ class UsersController < ApplicationController
   def withdraw
   end
 
+  def followings
+  end
+
+  def followeds
+  end
+
   private
 
   def user_params

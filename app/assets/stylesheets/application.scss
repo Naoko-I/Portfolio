@@ -25,7 +25,7 @@
 
 /* ブートストラップのデフォルト変更 */
 a {
-  color: #fff;
+  color: #000;
   text-decoration: none;
 }
 
@@ -107,7 +107,7 @@ header {
   width: 100%;
   height: 100px;
   padding: 5px 40px;
-  position: fixed;
+  
   color: #fff;
   background-image: image-url("kaffee-meister-XhWntGj2N98-unsplash");
   background-size: cover;
@@ -133,7 +133,7 @@ header {
 }
 
 /* user.index  未設定width,height,margin,padding、containerとrowのmarginどうするか,,,aboutページにもかかっちゃう*/
-.blog-box, user-list-box {
+.blog-box, .user-list-box {
   border: 1px solid #C0C0C0;
 }
 
@@ -146,6 +146,16 @@ header {
 
 .profile-image {
   pagddin-top: 30px;
+}
+
+/* user.index */
+.sidebar-heading {
+  text-align: center;
+  font-size: 30px;
+}
+
+li {
+  display: inline-block;
 }
 
 

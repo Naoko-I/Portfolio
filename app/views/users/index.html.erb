@@ -1,5 +1,4 @@
 <%= render 'users/header' %>
-
 <div class="container">
     <!-- <main class="clearfix"> -->
         <!-- 新着順に表示 -->
@@ -8,10 +7,10 @@
                 <div class="newly-arriving-blog">
                     <% @blogs.each do |blog| %>
                         <div class="blog-box">
-                            <section class="blog-item clearfix">
+                            <!-- <section class="blog-item clearfix"> -->
                                 <div class="blog-headline">
                                     <%= link_to(blog.user) do %>
-                                        <%= attachment_image_tag blog.user, :profile_image, size:'40x40', format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
+                                        <%= attachment_image_tag blog.user, :profile_image, size:'60x60', format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
                                         <%= blog.user.name %>
                                     <% end %>
                                 </div>
@@ -44,7 +43,7 @@
                                     <%= f.submit '投稿する' %>
                                     <% end %>
                                 </div>
-                            </section>
+                            <!-- </section> -->
                         </div>
                     <% end %>
                 </div>
@@ -54,10 +53,10 @@
                 <div class="sidebar">
                     <div class="sidebar-right">
                         <div class="sidebar-heading">
-                            <ul class="current-user-profile">
+                            <ul class="current-user-image">
                                 <li>
                                   <%= link_to user_path(current_user) do %>
-                                  <%= attachment_image_tag current_user, :profile_image, size:'50x50', format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
+                                  <%= attachment_image_tag current_user, :profile_image, size:'80x80', format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
                                 </li>
                                 <li>
                                   <%= current_user.name %>
@@ -71,7 +70,7 @@
                         <div crass="following-user-list">
                             <ul class ="list-heading">
                                 <li>フォロー中</li>
-                                <li><%= link_to "すべて見る", relationships_following_path %></li>
+                                <li><%= link_to "すべて見る", users_followings_path %></li>
                             </ul>
                         </div>
                         <div class="following-user-list">
@@ -79,7 +78,7 @@
                                 <ul>
                                     <li>
                                       <%= link_to user_path(following) do %>
-                                      <%= attachment_image_tag current_user.following, :profile_image, size:'50x50', format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
+                                      <%= attachment_image_tag current_user.following, :profile_image, size:'60x60', format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
                                       <% end %>
                                     </li>
                                     <li>
@@ -91,10 +90,10 @@
                     </section>
                 <!--  followed_user一覧 -->
                     <section class="user-list-box">
-                        <div class="followed-user">">
+                        <div class="followed-user">
                             <ul class ="list-heading">
                                 <li>フォロワー</li>
-                                <li><%= link_to "すべて見る", relationships_followed_path %></li>
+                                <li><%= link_to "すべて見る", users_followeds_path %></li>
                             </ul>
                         </div>
                         <div class="followed-user-list">
