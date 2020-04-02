@@ -1,38 +1,35 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
-      <!-- <div class="container relative"> -->
-        <!-- <nav class="navbar navbarheader"> -->
-          <div class="nav navbar-left">
-              <a class="navbar-logo" href="/">
-                logo<%#= image_tag('logo.png') %>
-              </a>
-          </div>
+    <div class="nav navbar-left">
+        <a class="navbar-logo" href="/">
+          logo<%#= image_tag('logo.png') %>
+        </a>
+    </div>
 
-          <div class="navber navbar-center">
-            <div class="serch">
-              <form class="form-inline my-2 my-lg-0">
-                 <input class="form-control mr-sm-3" type="text" placeholder="Search" aria-label="Search">
-                <!-- 虫眼鏡アイコンに変更したい -->
-                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-              </form>
-            </div>
-          </div>
+    <div class="navber navbar-center">
+      <div class="serch">
+        <form class="form-inline my-2 my-lg-0">
+           <input class="form-control mr-sm-3" type="text" placeholder="Search" aria-label="Search">
+          <!-- 虫眼鏡アイコンに変更したい -->
+           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
 
-         <% if user_signed_in? %>
-            <ul class="nav navbar-nav navbar-right">
-               <li>
-                  <%= link_to "", users_path, class: "glyphicon glyphicon-home fa-2x" %>
-                </li>
-                <li>
-                  <%= link_to "", new_blog_path, class: "fa fa-paper-plane fa-2x" %>
-                </li>
-                <li>
-                  <%= link_to "", user_favorites_path(current_user), class: "glyphicon glyphicon-heart-empty fa-2x" %>
-                </li>
-                <li>
-                  <%= attachment_image_tag current_user, :profile_image, size:'60x60', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
-                </li>
-            </ul>
-          <% end %>
-      <!-- </div> -->
+   <% if user_signed_in? %>
+      <ul class="nav navbar-nav navbar-right">
+         <li>
+            <%= link_to "", users_path, class: "glyphicon glyphicon-home fa-2x" %>
+          </li>
+          <li>
+            <%= link_to "", new_blog_path, class: "fa fa-paper-plane fa-2x" %>
+          </li>
+          <li>
+            <%= link_to "", user_favorites_path(current_user), class: "glyphicon glyphicon-heart-empty fa-2x" %>
+          </li>
+          <li>
+            <%= attachment_image_tag current_user, :profile_image, size:'60x60', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
+          </li>
+      </ul>
+    <% end %>
 </header>
 
