@@ -1,13 +1,12 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+   before_action :authenticate_user!
 
   def index
     @users = User.all
     @blogs = Blog.all
     @user = current_user
-    @followings = @user.following_user.all
-    @folloewds = @user.followed_user.all
-    # @user = User.find(params[:id])
+    @followings = @user.followings
+    @folloewds = @user.followeds
   end
 
   def show
@@ -38,6 +37,6 @@ class UsersController < ApplicationController
 
   def user_params
     #is_deleatedカラム加える??
-    params.require(:user).permit(:name, :email, :profile_image)
+    params.require(:user).permit(:name, :email, :profile_image, :introduction)
   end
 end
