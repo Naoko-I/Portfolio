@@ -4,9 +4,9 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @blogs = Blog.all
-    @user = current_user
-    @followings = @user.followings
-    @followeds = @user.followeds
+    @user = User.find(params[:id])
+    @followings = current_user.followings
+    @followeds = current_user.followeds
     @blog_comment = BlogComment.new
   end
 

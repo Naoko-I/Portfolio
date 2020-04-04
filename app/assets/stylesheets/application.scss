@@ -31,6 +31,13 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all  0.2s ease;
+}
+
 /* topページ　*/
 .title {
   margin-top: 250px;
@@ -120,16 +127,17 @@ header {
   padding: 20px 0;
   font-size: 36px;
   color: #fff;
+  font-family: 'Satisfy', cursive;
  }
 
 .serch {
   display: inline-block;
   float : left;
-  padding: 25px 260px;
+  padding: 25px 320px;
  }
  /* ↓↓color指定が適用されない、linkのマウスオーバーが変*/
 .navbar-right {
-  padding-top: 20px;
+  padding: 20px 5px;
 }
 
 /* user.index  未設定width,height,margin,padding、containerとrowのmarginどうするか,,,aboutページにもかかっちゃう*/
@@ -157,6 +165,16 @@ header {
   padding: 10px 15px;
 }
 
+article {
+  margin-bottom : 15px;
+  border: 1px solid #808080;
+}
+
+.sidebar-heading {
+  text-align: center;
+  font-size: 30px;
+}
+
 /* user.show */
 .profile-list {
   display: inline-block;
@@ -165,17 +183,15 @@ header {
 }
 
 .profile-image {
-  pagddin-top: 30px;
+  padding-top: 30px;
 }
 
-/* user.index */
-.sidebar-heading {
-  text-align: center;
-  font-size: 30px;
+.user-date {
+  float: left;
+  display: block;
 }
-
-li {
-  display: inline-block;
+.user-wirhdraw {
+  margin-top: 30px;
 }
 
 

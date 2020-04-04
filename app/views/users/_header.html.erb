@@ -9,8 +9,7 @@
       <div class="serch">
         <form class="form-inline my-2 my-lg-0">
            <input class="form-control mr-sm-3" type="text" placeholder="Search" aria-label="Search">
-          <!-- 虫眼鏡アイコンに変更したい -->
-           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+           <button class="glyphicon glyphicon-search" aria-hidden="true" type="submit"></button>
         </form>
       </div>
     </div>
@@ -21,10 +20,10 @@
             <%= link_to "", users_path, class: "glyphicon glyphicon-home fa-2x" %>
           </li>
           <li>
-            <%= link_to "", new_blog_path, class: "fa fa-paper-plane fa-2x" %>
+            <%= link_to "", user_favorites_path(current_user), class: "glyphicon glyphicon-heart-empty fa-2x" %>
           </li>
           <li>
-            <%= link_to "", user_favorites_path(current_user), class: "fa fa-bookmark fa-2x" %>
+            <%= link_to "", new_blog_path, class: "fa fa-paper-plane fa-2x" %>
           </li>
           <li>
             <%#linkつけるとhedaerからはみ出してしまうためコメントアウト中。。。= link_to user_path(current_user) do %>

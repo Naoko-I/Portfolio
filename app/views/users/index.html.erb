@@ -4,49 +4,51 @@
         <div class="row">
             <!-- 新着blog表示 -->
             <div class="col-md-offset-1 col-md-6">
-                <div class="newly-arriving-blog">
+                <article class="new-arriving-blog">
                     <% @blogs.each do |blog| %>
-                        <div class="blog-box">
                             <!-- <section class="blog-item clearfix"> -->
-                                <div class="blog-headline">
+                                <header>
+                                    <h2>blog.userのimageと名前が入る</h2>
                                     <%= link_to(blog.user) do %>
                                         <%= attachment_image_tag blog.user, :profile_image, size:'60x60', format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
                                         <%= blog.user.name %>
                                     <% end %>
-                                </div>
+                                    <!--追加実装。blogカラムにdatetime追加しないと表示できない --><%#= blog.datetime %>
+                                    <p><time datetime="2020/4/1">2020/4/1</time></p>
+                                </header>
                                 <div class="blog-image">
                                     <%= attachment_image_tag blog, :image, size:'100x100', format: 'jpeg', fallback: 'no_image.jpg', size:'100x100' %>
-                                </div>
-                                <div class="blog-box heading has-icon">
-                                    <!-- 追加実装//facebook参考に各iconのカウント数表示 -->
-                                    <ul class="blog-icon">
-                                        <li>
-                                          <%= link_to "", user_favorites_path(current_user), class: "glyphicon glyphicon-heart-empty" %>
-                                        </li>
-                                        <li>
-                                          <%= link_to "", blog_path(blog), class: "far fa-comment" %>
-                                        </li>
-                                        <!--非同期で色が変わるのみ、そのままBookmark一覧(create)にblogが追加される  -->
-                                        <li>
-                                          <i class="far fa-bookmark"></i>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="blog-body">
                                     <%= blog.body %>
                                 </div>
-                                <!-- 追加機能//blog投稿日時実装の場合ここに <p class="blog-date">June 17, 2017</p> -->
+                                <footer>
+                                    <!-- 非同期　:hoverでiconの色変更→ハートとBookmarkのみ。facebook参考に各項目のカウント数表示 -->
+                                    <ul class="blog-icon">
+                                        <li>
+                                          <i class="glyphicon glyphicon-heart-empty"></i>
+                                          <%= blog.favorites.count %>
+                                        </li>
+                                        <li>
+                                          <i class="far fa-comment">
+                                          <%= blog.comments.count %>
+                                        </li>
+                                        <li>
+                                          <i class="far fa-bookmark"></i>
+                                          <!-- アイコン変更??共有機能実装か。。。検討！ -->
+                                        </li>
+                                    </ul>
                                  <!-- 非同期で新規コメント入力機能追加 -->
-                                <div class="new-comment-form">
-                                    <%= form_for [@blog, @blog_comment] do |f| %>
-                                    <%= f.text_area :comment, size: "90x5" %>
-                                    <%= f.submit '投稿する' %>
-                                    <% end %>
-                                </div>
+                                    <div class="new-comment-form">
+                                        <%= form_for [@blog, @blog_comment] do |f| %>
+                                        <!-- <input class="form-control mr-sm-3" type="text" placeholder="Commnets" aria-label="Comments"> -->
+                                        <%= f.text_area :comment %>
+                                        <!-- size: "90x5" %> -->
+                                        <%= f.submit '投稿する' %>
+                                        <% end %>
+                                    </div>
+                                </footer>
                             <!-- </section> -->
-                        </div>
                     <% end %>
-                </div>
+                </article>
             </div>
         <!-- side-bar -->
             <div class="col-md-5">
