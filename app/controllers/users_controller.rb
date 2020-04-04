@@ -40,7 +40,6 @@ class UsersController < ApplicationController
   end
 
   private
-
   def user_params
     #is_deleatedカラム加える??
     params.require(:user).permit(:name, :email, :profile_image, :introduction)

@@ -37,8 +37,18 @@
 							<tr>
 								<th>メールアドレス</th>
 								<td><label for="email"></label>
-										<%= f.text_area :email %>
-										<p>メールアドレスはプロフィールでは公開されません</p>
+									<%= f.text_field :email %>
+									<p>⚠︎メールアドレスはプロフィールには公開されません</p>
+								</td>
+							</tr>
+							<tr>
+								<th>パスワード</th>
+								<td>現在のパスワード  <label for="encrypted_password"></label></td>
+							<tr>
+							<tr>
+								<th></th>
+								<td>新しいパスワード  <%= f.text_field :reset_password_token %>
+									<p>⚠︎パスワードはプロフィールには公開されません</p>
 								</td>
 							</tr>
 							<tr>

@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 2020_03_25_092415) do
 
   create_table "blogs", force: :cascade do |t|
     t.string "body"
+    t.string "image_id"
     t.integer "user_id"
-    t.integer "blog_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
