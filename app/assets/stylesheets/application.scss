@@ -22,9 +22,7 @@
   box-sizing: border-box;
   font-family: 'Didot';
 }
-.container {
-  margin-right: 100px;
-}
+
 /* ブートストラップのデフォルト変更 */
 a {
   color: #000;
@@ -88,7 +86,7 @@ section {
   line-height: 1.5;
 }
 
-/* aboutページ → 他ページに<p>適用できなければhomes.scssへ移動 */
+/* aboutページ */
 #about {
 	background-image: image-url("yohann-libot-NgRMY9QcnhE-unsplash.jpg");
   background-size: cover;
@@ -130,23 +128,38 @@ header {
   font-family: 'Satisfy', cursive;
  }
 
-.serch {
+.search {
   display: inline-block;
   float : left;
   padding: 25px 320px;
+  color: #000;
  }
  /* ↓↓color指定が適用されない、linkのマウスオーバーが変*/
 .navbar-right {
   padding: 20px 5px;
+  a {
+    color: #fff;
+  }
 }
 
-/* user.index  未設定width,height,margin,padding、containerとrowのmarginどうするか,,,aboutページにもかかっちゃう*/
-.profile-image-circle {
-  padding: 5px;
-  border: 3px solid #008080;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
+/* user.index */
+#users-container {
+  div.current-user-profile {
+    height: 100px;
+    img.profile-image-circle {
+      padding: 5px;
+      border: 3px solid #008080;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      /*&:hover{
+        color: #fff;
+      }*/
+    }
+    .name {
+      padding-left: 20px;
+    }
+  }
 }
 
 .sidebar-right {
@@ -171,29 +184,23 @@ article {
 }
 
 .sidebar-heading {
-  text-align: center;
   font-size: 30px;
 }
 
 /* user.show */
-.profile-list {
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 18px;
-}
-
-.profile-image {
-  padding-top: 30px;
-}
-
-.user-date {
+.user-data {
   float: left;
   display: block;
+  li {
+    display: inline-block;
+    padding: 0 20px 10px 0;
+    font-size: 18px;
+  }
 }
+
 .user-wirhdraw {
   margin-top: 30px;
 }
-
 
 
 

@@ -5,14 +5,14 @@
 		<div class="col-md-offset-3 col-md-1">
 			<%= attachment_image_tag @user, :profile_image, size:"120x120", format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
 		</div>
-		<div class="col-md-offset-1 col-md-6">
-			<div class="user-date">
+		<div class="col-md-offset-1 col-md-7">
+			<div class="user-data">
 				<div class="user-profile">
 					<ul>
-						<li class="profile-list">
+						<li>
 						  <h1><%= current_user.name %></h1>
 						</li>
-					  	<li class="profile-list">
+					  	<li>
 					      <% if @user.id == current_user.id %>
 						    <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-default" %>
 						  <!-- こんなのあり？？ -->
@@ -26,9 +26,9 @@
 				</div>
 				<div class="relationships-count">
 					<ul>
-					  <li class="profile-list">投稿<%= @user.blogs.count %>件</li>
-					  <li class="profile-list">フォロワー<%= @user.followings.count %>人</li>
-					  <li class="profile-list">フォロー中<%= @user.followeds.count %>人</li>
+					  <li>投稿<%= @user.blogs.count %>件</li>
+					  <li>フォロワー<%= @user.followings.count %>人</li>
+					  <li>フォロー中<%= @user.followeds.count %>人</li>
 					</ul>
 				</div>
 				<div class="user-introduction">
@@ -38,9 +38,9 @@
 					<p>ここにintroductionが入ります</p>
 				</div>
 				<div class="user-wirhdraw">
-				  <% if @user.id == current_user.id %>
-			　　　　<%= link_to "退会", users_withdraw_path(@user), class: "btn btn-default w-150px", "data-confirm" => "本当に退会しますか？" %>
-				  <% end %>
+					<% if @user.id == current_user.id %>
+						<%= link_to "退会", users_withdraw_path(@user), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に退会しますか？" %>
+					<% end %>
 				</div>
 			</div>
 		</div>
