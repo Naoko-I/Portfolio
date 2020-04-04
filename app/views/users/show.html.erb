@@ -3,23 +3,23 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-offset-3 col-md-1">
-			<%= attachment_image_tag @user, :profile_image, size:"120x120", format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
+			<%= attachment_image_tag @user, :profile_image, size:"150x150", format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
 		</div>
 		<div class="col-md-offset-1 col-md-7">
 			<div class="user-data">
 				<div class="user-profile">
 					<ul>
 						<li>
-						  <h1><%= current_user.name %></h1>
+						  <h1><%= @user.name %></h1>
 						</li>
 					  	<li>
 					      <% if @user.id == current_user.id %>
-						    <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-default" %>
+						    <%= link_to "プロフィール編集", edit_user_path(current_user), class: "btn btn-default" %>
 						  <!-- こんなのあり？？ -->
 						  <% elsif @user == current_user.following?(user) %>
 	    					<%= link_to 'フォロ-中', destroy_relation_path(user_id), method: :delete, class: "btn default", "data-confirm" => "フォローをやめますか？" %>
 	  					  <% else %>
-	    					  <%= link_to 'フォローする', user_relationships_path(user.id), class: "btn btn-primary" %>
+	    					  <%= link_to 'フォローする', create_relation_path(user_id), class: "btn btn-primary" %>
 	  					  <% end %>
 					    </li>
 					</ul>
@@ -32,14 +32,14 @@
 					</ul>
 				</div>
 				<div class="user-introduction">
-					<%= current_user.introduction %>
+					<%= @user.introduction %>
 					<p>ここにintroductionが入ります</p>
 					<p>ここにintroductionが入ります</p>
 					<p>ここにintroductionが入ります</p>
 				</div>
 				<div class="user-wirhdraw">
 					<% if @user.id == current_user.id %>
-						<%= link_to "退会", users_withdraw_path(@user), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に退会しますか？" %>
+						<%= link_to "退会", users_withdraw_path(current_user), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に退会しますか？" %>
 					<% end %>
 				</div>
 			</div>

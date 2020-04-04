@@ -1,4 +1,61 @@
 <%= render 'users/header' %>
 
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-md-offset-3 col-md-7">
+			<div class="profile-edit-box">
+					<% if @user.errors.any? %>
+						<div class="error_message">
+			          <h2><strong><%= @user.errors.count %>errors prohibited this obj from being saved:</strong></h2>
+			          <ul>
+			           <% @user.errors.full_messages.each do |message| %>
+			            <li><%= message %></li>
+			           <% end %>
+			          </ul>
+			      </div>
+		   		<% end %>
+
+		   	<div class="form">
+				  <%= form_for(@user) do |f| %>
+						<table>
+							<tr>
+								<th><%= attachment_image_tag @user, :profile_image, size:'40x40', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %></th>
+								<td><%= @user.name %></td>
+							</tr>
+							<tr>
+								<th>ユーザネーム</th>
+								<td><label for="user_name"></label>
+										<%= f.text_field :name %>
+								</td>
+							</tr>
+							<tr>
+								<th>自己紹介</th>
+								<td><label for="user_introduction"></label>
+										<%= f.text_area :introduction %>
+								</td>
+							</tr>
+							<tr>
+								<th>メールアドレス</th>
+								<td><label for="email"></label>
+										<%= f.text_area :email %>
+										<p>メールアドレスはプロフィールでは公開されません</p>
+								</td>
+							</tr>
+							<tr>
+								<th>プロフィール写真</th>
+								<td><label for="user_profile_image"></label>
+										<%= f.attachment_field :profile_image %>
+								</td>
+							</tr>
+						</table>
+
+							<%= f.submit "送信する", class: "btn btn-primary" %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
