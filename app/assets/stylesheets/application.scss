@@ -22,7 +22,9 @@
   box-sizing: border-box;
   font-family: 'Didot';
 }
-
+.container {
+  margin-right: 100px;
+}
 /* ブートストラップのデフォルト変更 */
 a {
   color: #000;
@@ -102,7 +104,7 @@ p {
 	height: 300px;
 }
 
-/* header position未設定*/
+/* header position: relativeかabsolute;未設定*/
 header {
   width: 100%;
   height: 100px;
@@ -112,10 +114,10 @@ header {
   background-size: cover;
  }
 
-.navbar-logo {
+.app-logo {
   display: inline-block;
   float: left;
-  padding: 20px 30px;
+  padding: 20px 0;
   font-size: 36px;
   color: #fff;
  }
@@ -123,25 +125,36 @@ header {
 .serch {
   display: inline-block;
   float : left;
-  padding: 25px 380px;
+  padding: 25px 260px;
  }
- /* ↓↓適用されていない。。。*/
+ /* ↓↓color指定が適用されない、linkのマウスオーバーが変*/
 .navbar-right {
   padding-top: 20px;
-  color: #fff;
 }
 
 /* user.index  未設定width,height,margin,padding、containerとrowのmarginどうするか,,,aboutページにもかかっちゃう*/
-.blog-box, .user-list-box {
-  border: 1px solid #C0C0C0;
-}
-
 .profile-image-circle {
   padding: 5px;
   border: 3px solid #008080;
   width: 100px;
   height: 100px;
   border-radius: 50%;
+}
+
+.sidebar-right {
+  margin : auto 25px;
+}
+
+.box-heading {
+  display: flex;
+  justify-content: space-between;
+}
+
+.blog-box, .user-list-box {
+  border: 1px solid #808080;
+  border-radius: 8px;
+  margin: 15px;
+  padding: 10px 15px;
 }
 
 /* user.show */

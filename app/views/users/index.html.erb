@@ -1,9 +1,9 @@
 <%= render 'users/header' %>
 <div class="container">
     <!-- <main class="clearfix"> -->
-        <!-- 新着順に表示 -->
         <div class="row">
-            <div class="col-md-offset-2 col-md-6">
+            <!-- 新着blog表示 -->
+            <div class="col-md-offset-1 col-md-6">
                 <div class="newly-arriving-blog">
                     <% @blogs.each do |blog| %>
                         <div class="blog-box">
@@ -48,78 +48,66 @@
                     <% end %>
                 </div>
             </div>
-
-            <div class="col-md-4">
-                <div class="sidebar">
-                    <!-- <div class="sidebar-right"> -->
-                        <div class="sidebar-heading">
-                            <ul class="current-user-image">
-                                <li>
-                                  <%= link_to user_path(current_user) do %>
-                                  <div class="profile-image-circle">
-                                  <%= attachment_image_tag current_user, :profile_image, size:'80x80', format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
-                                  </div>
-                                </li>
-                                <li>
-                                  <%= current_user.name %>
-                                  <% end %>
-                                </li>
-                            </ul>
-                        <!-- </div> -->
+        <!-- side-bar -->
+            <div class="col-md-5">
+                <div class="sidebar-right">
+                    <div class="sidebar-heading">
+                        <ul class="current-user-profile">
+                          <li class="profile-image-circle">
+                            <%= link_to user_path(current_user) do %>
+                            <%= attachment_image_tag current_user, :profile_image, size:'75x75', format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
+                          </li>
+                          <li class="">
+                            <%= current_user.name %>
+                            <% end %>
+                          </li>
+                        </ul>
                     </div>
                 <!-- following_user一覧 -->
-                    <section class="relationships-user-list">
-                        <div crass="user-list-box">
+                    <div class="relationships-user-list">
+                        <div class="user-list-box">
+                            <div class="box-heading">
+                                <h5>フォロー中</h5>
+                                <h5><%= link_to "すべて見る", users_followings_path %></h5>
+                            </div>
                             <div class="following-user-list">
-                                <ul class ="list-heading">
-                                    <li>フォロー中</li>
-                                    <li><%= link_to "すべて見る", users_followings_path %></li>
+                                <ul>
+                                  <% @followings.each do |following| %>
+                                    <li>
+                                      <%= link_to user_path(following) do %>
+                                      <%= attachment_image_tag current_user.following, :profile_image, size:'20x20', format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
+                                      <% end %>
+                                    </li>
+                                    <li>
+                                      <%= current_user.following.name %>
+                                    </li>
+                                  <% end %>
                                 </ul>
                             </div>
                         </div>
+                    <!--  followed_user一覧 -->
                         <div class="user-list-box">
-                            <div class="followed-user-list">
-                                <% @followings.each do |following| %>
-                                    <ul>
-                                        <li>
-                                          <%= link_to user_path(following) do %>
-                                          <%= attachment_image_tag current_user.following, :profile_image, size:'60x60', format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
-                                          <% end %>
-                                        </li>
-                                        <li>
-                                          <%= current_user.following.name %>
-                                        </li>
-                                    </ul>
-                                <% end %>
+                            <div class ="box-heading">
+                              <h5>フォロワー</h5>
+                              <h5><%= link_to "すべて見る", users_followeds_path %></h5>
                             </div>
-                        </div>
-                    </section>
-                <!--  followed_user一覧 -->
-                    <section class="user-list-box">
-                        <div class="followed-user">
-                            <ul class ="list-heading">
-                                <li>フォロワー</li>
-                                <li><%= link_to "すべて見る", users_followeds_path %></li>
-                            </ul>
-                        </div>
-                        <div class="followed-user-list">
-                            <% @followeds.each do |followed| %>
+                            <div class="followed-user-list">
                                 <ul>
+                                  <% @followeds.each do |followed| %>
                                     <li>
                                       <%= link_to user_path(followed) do %>
-                                      <%= attachment_image_tag current_user.followed, :profile_image, size:'50x50', format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
+                                      <%= attachment_image_tag current_user.followed, :profile_image, size:'20x20', format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
                                       <% end %>
                                     </li>
                                     <li>
                                       <%= current_user.followed.name %>
                                     </li>
+                                  <% end %>
                                 </ul>
-                            <% end %>
+                            </div>
                         </div>
-                    </section>
+                    </div>
                 </div>
             </div>
-        </div>
-    <!-- </main> -->
 </div>
 

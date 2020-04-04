@@ -1,7 +1,7 @@
 <header class="navbar">
     <div class="nav navbar-left">
-        <a class="navbar-logo" href="/">
-          logo<%#= image_tag('logo.png') %>
+        <a class="app-logo" href="/">
+          Bonheur Chocolat<%#= image_tag('logo.png') %>
         </a>
     </div>
 
@@ -27,7 +27,9 @@
             <%= link_to "", user_favorites_path(current_user), class: "fa fa-bookmark fa-2x" %>
           </li>
           <li>
+            <%#linkつけるとhedaerからはみ出してしまうためコメントアウト中。。。= link_to user_path(current_user) do %>
             <%= attachment_image_tag current_user, :profile_image, size:'50x50', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
+            <%# end %>
           </li>
       </ul>
     <% end %>
