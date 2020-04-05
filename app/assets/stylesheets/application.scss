@@ -252,7 +252,7 @@ article {
 
 /* user.edit,user共通ページ内で使用box*/
 .common-user-box {
-  margin: 20px 0 0 30px;
+  margin-top: 20px;
   padding: 20px;
   height: 500px;
   border: 1px solid #cccccc;
@@ -281,4 +281,12 @@ article {
   }
 }
 
+/* follow,follower.index */
+.common-relationship-box {
+  margin-top: 20px;
+  padding: 20px;
+  height: 500px;
+  border: none;
+  background-color: #fff;
+}
 

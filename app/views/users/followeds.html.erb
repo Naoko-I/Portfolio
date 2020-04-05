@@ -1,1 +1,28 @@
-<a>フォロワー一覧</a>
+<%= render 'users/header' %>
+
+<div class="container" id="users-container">
+	<div class="row">
+		<div class="col-md-offset-3 col-md-6 col-md-offset-3 ">
+			<h3>あなたをフォロー中</h3>
+				<div class="common-relationship-box">
+					<table class="follower-user-list">
+            <% @user.followeds.each do |followed| %>
+              <tr>
+              	<td>
+	                <%= link_to user_path(followed) do %>
+	                <%= attachment_image_tag current_user.followed, :profile_image, size:'50x50', format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
+                 	<% end %>
+              	</td>
+              	<td>
+                	<%= followed.name %>
+                </td>
+                <td>
+                  <% if @user.id == current_user.id %>
+                  <%= link_to "フォローする", create_relation_path(user_id), method: :post, class: "btn btn-primary", "data-confirm" => "フォローしますか？" %>
+              </tr>
+            <% end %>
+          </table>
+        </div>
+    </div>
+  </div>
+</div>

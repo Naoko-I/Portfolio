@@ -35,11 +35,11 @@ class UsersController < ApplicationController
   end
 
   def followings
-    # user.indexすべて見る⇨ここに飛んできてほしい
+    @user = current_user
   end
 
   def followeds
-    # user.indexすべて見る⇨ここに飛んできてほしい
+    @user = current_user
   end
 
   private
