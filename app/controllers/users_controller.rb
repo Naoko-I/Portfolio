@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
    before_action :authenticate_user!
+   before_action :correct_user, only: [:edit, :update]
 
   def index
     @users = User.all
@@ -34,14 +35,23 @@ class UsersController < ApplicationController
   end
 
   def followings
+    # user.indexすべて見る⇨ここに飛んできてほしい
   end
 
   def followeds
+    # user.indexすべて見る⇨ここに飛んできてほしい
   end
 
   private
-  def user_params
-    #is_deleatedカラム加える??
-    params.require(:user).permit(:name, :email, :profile_image, :introduction)
-  end
+    def user_params
+      #is_deleatedカラム加える??
+      params.require(:user).permit(:name, :email, :profile_image, :introduction)
+    end
+
+    def correct_user
+      @user = User.find(params[:id])
+        if @user.id != current_user.id
+          redirect_to user_path(current_user)
+        end
+    end
 end

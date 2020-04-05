@@ -5,11 +5,10 @@ class BlogsController < ApplicationController
   end
 
   def create
-    @blog = Blog.new(blog_params)
+    @blog = Blog.new
     @blog.user_id = current_user.id
-     if @blog.save
-        flash[:notice] = "You have creatad Caption successfully."
-        redirect_to user_path(current_user)
+     if @blog.save(blog_params)
+        redirect_to users_path(current_user)
      else
         render :new
      end

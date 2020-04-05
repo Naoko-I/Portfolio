@@ -2,33 +2,27 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-md-offset-3 col-md-7">
-			<div class="profile-edit-box">
-				<!-- renderでエラー文表示 -->
+		<div class="col-md-offset-3 col-md-6 col-md-offset-3 ">
+			<div class="common-user-box">
 				<div class="caption">
 						<%= form_for(@blog) do |f| %>
 					<nav class="caption-heading">
 						<ul>
 							<li>
-								<%= link_to "", users_path(@user), class: "fas fa-chevron-left" %>
+								<%= attachment_image_tag @blog, :image_id, size:'200x250', format: 'jpeg', class: "glyphicon glyphicon-camera" %>
 							</li>
 							<li>
 								新規投稿
 							</li>
 							<li>
-								<%= f.submit "", class: "fa fa-paper-plane", method: :post, "data-confirm" => "You have creatad book successfully." %>
+								<%= f.submit "投稿する", class: "btn btn-primary", method: :post, "data-confirm" => "You have creatad book successfully." %>
 								<!-- 入力エラーの場合if文でエラー表示 -->
 							</li>
 						</ul>
 					</nav>
 
 					<div class="caption-body">
-							<ul>
-								<li>
-									<%= attachment_image_tag @blog, :image, size:'50x50' %>
-								</li>
-								<li><%= f.text_area :body %></li>
-							</ul>
+						<%= f.text_area :body %>
 						<% end %>
 					</div>
 				</div>
