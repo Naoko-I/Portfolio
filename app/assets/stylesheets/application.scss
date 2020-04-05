@@ -85,7 +85,7 @@ a:hover {
   }
 }
 
-/* sign up,log inページ　*/
+/* sign up,log in */
 section {
 	margin-top: 160px;
 }
@@ -111,7 +111,7 @@ section {
   }
 }
 
-/* aboutページ */
+/* about */
 #about {
 	background-image: image-url("yohann-libot-NgRMY9QcnhE-unsplash.jpg");
   background-size: cover;
@@ -171,7 +171,7 @@ header {
   padding: 25px 280px;
   color: #000;
  }
- /* ↓↓color指定が適用されない、linkのマウスオーバーが変*/
+
 .navbar-right {
   padding: 20px 5px;
   a {
@@ -179,28 +179,37 @@ header {
   }
 }
 
+.nav li a:hover {
+background-color: transparent; /*ブートストラップのデフォルト解除→link背景色を透明に設定*/
+}
+
 /* user.index */
-.users-container {
-  background-color: #f8f8f8;
-  margin-top: 30px;
-  .current-user-profile {
-    height: 100px;
-    .profile-image-circle {
-      width: 100px;
-      height: 100px;
-      background: linear-gradient(to right, #00f, #f00);
-      border-radius: 50%;
-      padding: 3px;
-    }
-    .name {
-      padding-left: 20px;
-    }
-  }
+article {
+  margin-bottom : 15px;
+  background-color: #fff;
+  border: 1px solid #cccccc;
+}
+
+.col-md-offset-1.col-md-4 {
+  position: sticky;
 }
 
 .sidebar-right {
-  margin : auto 25px;
-  position: sticky;
+  padding-left: 15px;
+  th {
+    width: 100px;
+    font-size: 25px;
+  }
+}
+
+.current-user-profile {
+  .profile-image-circle {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(to right, #00f, #f00);
+    border-radius: 50%;
+    padding: 3px;
+  }
 }
 
 .box-heading {
@@ -211,21 +220,10 @@ header {
 .blog-box, .user-list-box {
   margin: 20px;
   padding: 10px 15px;
-  /*heightはuser-list-box用に設定*/
-  height: 300px;
+  height: 300px;/* user-list-box用に設定*/
   background-color: #fff;
   border: 1px solid #cccccc;
   border-radius: 8px;
-}
-
-article {
-  margin-bottom : 15px;
-  background-color: #fff;
-  border: 1px solid #cccccc;
-}
-
-.sidebar-heading {
-  font-size: 30px;
 }
 
 /* user.show */
@@ -257,8 +255,7 @@ article {
   margin-top: 30px;
 }
 
-/* user.edit,user共通ページ内で使用box*/
-.common-user-box {
+.common-user-box { /* user.edit,user共通ページ内で使用box*/
   margin-top: 20px;
   padding: 20px;
   height: 500px;
