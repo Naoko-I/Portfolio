@@ -23,7 +23,7 @@
   font-family: 'Didot';
 }
 
-body {
+body, .container {
   background-color: #f8f8f8;
 }
 
@@ -154,7 +154,7 @@ header {
 .search {
   display: inline-block;
   float : left;
-  padding: 25px 320px;
+  padding: 25px 280px;
   color: #000;
  }
  /* ↓↓color指定が適用されない、linkのマウスオーバーが変*/
@@ -167,14 +167,15 @@ header {
 
 /* user.index */
 #users-container {
+  margin-top: 50px;
   div.current-user-profile {
     height: 100px;
     img.profile-image-circle {
       width: 100px;
       height: 100px;
-      border: 3px solid #cccccc;
+      background: linear-gradient(to right, #00f, #f00);
       border-radius: 50%;
-      padding: 5px;
+      padding: 3px;
     }
     .name {
       padding-left: 20px;
@@ -194,12 +195,14 @@ header {
 .blog-box, .user-list-box {
   margin: 15px;
   padding: 10px 15px;
+  background-color: #fff;
   border: 1px solid #808080;
   border-radius: 8px;
 }
 
 article {
   margin-bottom : 15px;
+  background-color: #fff;
   border: 1px solid #808080;
 }
 
