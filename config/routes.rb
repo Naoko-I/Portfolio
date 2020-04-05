@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   get '/homes/about' => 'homes#about'
 
   resources :blogs do
-   resource :favorites, only: [:create, :destroy]
+   resource :favorites, only: [:index,:create, :destroy]
    resource :blog_comments, only: [:new, :create, :edit, :update, :destroy]
-   resource :blog_images, only: [:new, :create, :edit, :update, :destroy]
+   # resource :blog_images, only: [:new, :create, :edit, :update, :destroy]
   end
 
   post '/relationships/:user_id/create' => 'relationships#create', as:'create_relation'
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   # フォローフォロワー一覧ページ作成のため作成
   get '/users/followings' => 'users#followings'
   get '/users/followeds' => 'users#followeds'
-  # 退会確認
+  # 退会確認。最終必要なければ削除
   get '/users/withdraw' => 'users#withdraw'
 
   devise_for :users

@@ -18,7 +18,9 @@
                 </td>
                 <td>
                   <% if @user.id == current_user.id %>
-                  <%= link_to "フォローする", create_relation_path(user_id), method: :post, class: "btn btn-primary", "data-confirm" => "フォローしますか？" %>
+                    <%= link_to "フォローする", create_relation_path(user_id), method: :post, class: "btn btn-primary", "data-confirm" => "フォローしますか？" %>
+                  <% end %>
+                </td>
               </tr>
             <% end %>
           </table>

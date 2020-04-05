@@ -23,6 +23,10 @@
   font-family: 'Didot';
 }
 
+body {
+  background-color: #fffcf9;
+}
+
 .container {
   /*background-color: #f8f8f8; */
   margin-top: 30px;
@@ -218,7 +222,7 @@ article {
 }
 
 .blog-box, .user-list-box {
-  margin: 20px;
+  margin: 20px 20px 20px 0;
   padding: 10px 15px;
   height: 300px;/* user-list-box用に設定*/
   background-color: #fff;
@@ -286,11 +290,12 @@ article {
 }
 
 /* follow,follower.index */
-.common-relationship-box {
+.common-relationship-box { /* common-user-boxと共通にできれば1つにまとめる */
   margin-top: 20px;
   padding: 20px;
   height: 500px;
-  border: none;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
   background-color: #fff;
 }
 
