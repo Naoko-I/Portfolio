@@ -12,6 +12,13 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    if current_user.is_deleted
+      #ログアウト処理
+      sign_out user
+      redirect_to root_path
+    else
+      redirect_to users_path
+  end
   end
 
   def edit
@@ -20,14 +27,11 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(@user.id)
-    if end_user.is_deleted
-      #ログアウト処理
-      sign_out end_user
-      redirect_to root_path
+    if
+      @user.update(user_params)
+      redirect_to user_path(@user.id)
     else
-      redirect_to users_path
+      render :edit
     end
   end
 

@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   get '/users/withdraw' => 'users#withdraw'
 
   devise_for :users
-  resources :users, only: [:create, :index, :show, :edit] do
+  resources :users, only: [:create, :index, :show, :edit, :update] do
    get "/favorites" => "favorites#index"
   end
 

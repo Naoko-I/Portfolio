@@ -23,8 +23,13 @@
   font-family: 'Didot';
 }
 
-body, .container {
-  background-color: #f8f8f8;
+.container {
+  /*background-color: #f8f8f8; */
+  margin-top: 30px;
+}
+
+.container.devise {
+  background: none;
 }
 
 ul {
@@ -58,6 +63,7 @@ a:hover {
   background-size: cover;
   background-image: image-url("9259804553_580c1f5eae_o.jpg");
 }
+
 .title {
   margin-top: 250px;
   text-align: center;
@@ -174,11 +180,12 @@ header {
 }
 
 /* user.index */
-#users-container {
+.users-container {
+  background-color: #f8f8f8;
   margin-top: 30px;
-  div.current-user-profile {
+  .current-user-profile {
     height: 100px;
-    img.profile-image-circle {
+    .profile-image-circle {
       width: 100px;
       height: 100px;
       background: linear-gradient(to right, #00f, #f00);
@@ -207,14 +214,14 @@ header {
   /*heightはuser-list-box用に設定*/
   height: 300px;
   background-color: #fff;
-  border: 1px solid #808080;
+  border: 1px solid #cccccc;
   border-radius: 8px;
 }
 
 article {
   margin-bottom : 15px;
   background-color: #fff;
-  border: 1px solid #808080;
+  border: 1px solid #cccccc;
 }
 
 .sidebar-heading {
@@ -273,7 +280,7 @@ article {
   ul {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #808080;
+  border-bottom: 1px solid #cccccc;
   height : 45px;
   }
   li {
