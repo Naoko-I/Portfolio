@@ -12,13 +12,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    if current_user.is_deleted
-      #ログアウト処理
-      sign_out user
-      redirect_to root_path
-    else
-      redirect_to users_path
-  end
   end
 
   def edit
@@ -36,6 +29,13 @@ class UsersController < ApplicationController
   end
 
   def withdraw
+    if current_user.is_deleted
+      #ログアウト処理
+      sign_out user
+      redirect_to root_path
+    else
+      redirect_to users_path
+  end
   end
 
   def followings
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
   private
     def user_params
       #is_deleatedカラム加える??
-      params.require(:user).permit(:name, :email, :profile_image, :introduction)
+      params.require(:user).permit(:name, :email, :profile_image, :introduction, :is_deleted)
     end
 
     def correct_user
@@ -59,3 +59,10 @@ class UsersController < ApplicationController
         end
     end
 end
+
+#ログアウト処理
+# if current_user.sign_out
+       # redirect_to root_path
+    # else
+       # redirect_to users_path
+    # end
