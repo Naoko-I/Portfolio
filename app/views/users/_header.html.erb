@@ -26,7 +26,7 @@
         <%= link_to "", user_favorites_path(current_user), class: "glyphicon glyphicon-heart-empty fa-2x" %>
       </li>
       <li>
-        <%= link_to "", destroy_user_session_path, class: "glyphicon glyphicon-log-out fa-2x" %>
+        <%= link_to "", destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out fa-2x" %>
       </li>
     </ul>
     <div class="nav navbar-right image">
@@ -36,10 +36,4 @@
     </div>
   <% end %>
 </header>
-
-<!-- <li> -->
-  <%#= link_to user_path(current_user) do %>
-  <%#= attachment_image_tag current_user, :profile_image, size:'50x50', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
-<!-- </li> -->
-<%# end %>
 

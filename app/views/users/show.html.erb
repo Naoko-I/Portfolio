@@ -18,7 +18,7 @@
 						      <% if @user.id == current_user.id %>
 							    	<%= link_to "プロフィール編集", edit_user_path(current_user), class: "btn btn-default" %>
 							  	<% elsif @user == current_user.following?(user) %>
-		    						<%= link_to 'フォロ-中', destroy_relation_path(user_id), method: :delete, class: "btn btn-default", "data-confirm" => "フォローをやめますか？" %>
+		    						<%= link_to 'フォロ-中', destroy_relation_path(user_id), method: :delete, class: "btn btn-default", "data-confirm" => "フォローを外しますか？" %>
 		  					  <% else %>
 		    					  <%= link_to 'フォローする', create_relation_path(user_id), class: "btn btn-primary" %>
 		  					  <% end %>

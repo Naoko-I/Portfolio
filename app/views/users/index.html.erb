@@ -24,10 +24,12 @@
             <ul class="blog-icon">
               <li>
                 <i class="glyphicon glyphicon-heart-empty"></i>
+                <!-- f.submit書く -->
                 <%= blog.favorites.count %>
               </li>
               <li>
                 <i class="far fa-comment">
+                <!-- %= f.submit "", blog_blog_comments_path, class: "ar fa-comment", data: :patch "data-confirm" => "コメントを投稿しました" -->
                 <%= blog.comments.count %>
               </li>
               <li>

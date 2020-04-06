@@ -46,7 +46,7 @@
 							</tr>
 						</table>
 
-							<%= f.submit "送信する", class: "btn btn-primary submit" %>
+							<%= f.submit "送信する", class: "btn btn-primary submit", method: :patch, "data-confirm" => "プロフィールを変更しました" %>
 					<% end %>
 				</div>
 			</div>
