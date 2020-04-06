@@ -262,7 +262,7 @@ article {
 .common-user-box { /* user.edit,user共通ページ内で使用box*/
   margin-top: 20px;
   padding: 20px;
-  height: 500px;
+  height: 600px;
   border: 1px solid #cccccc;
   border-radius: 5px;
   background-color: #fff;
@@ -272,8 +272,24 @@ article {
   }
 }
 
+/* user.edit */
 .edit-form {
-  margin: 15px 30px;
+  margin: 15px 0 0 30px;
+  table {
+    width: 100%;
+    tr {
+      vertical-align: top;
+      th {
+        width: 130px;
+        height: 80px;
+        padding-right: 15px;
+        text-align: right;
+      }
+    }
+  }
+  .btn {
+  margin-left: 190px;
+  }
 }
 
 /* blog.new */
