@@ -8,7 +8,7 @@
 				  <%= form_for(@user) do |f| %>
 						<table>
 							<tr>
-								<th><%= attachment_image_tag @user, :profile_image, size:'40x40', format: 'jpeg',fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %></th>
+								<th><%= attachment_image_tag @user, :profile_image, size:'40x40', format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %></th>
 								<td><%= @user.name %></td>
 							</tr>
 							<tr>
