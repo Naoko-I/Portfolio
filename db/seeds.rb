@@ -7,4 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 #ユーザテストデータ
-User.create( user_id: 2, name: '%?user2?', email: '%?user2@pf.com?', passward:'%?222222?', introduction: '', profile_image_id:'')
+User.create( name: %?user2?, email: %?user2@pf.com?, password: %?222222?, introduction:%??, profile_image_id:%?? )
+User.create( name: %?user3?, email: %?user3@pf.com?, password: %?333333?, introduction:%??, profile_image_id:%?? )
