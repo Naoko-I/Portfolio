@@ -7,8 +7,8 @@
 				<div class="edit-form">
 				  <%= form_for(@user) do |f| %>
 						<table>
-							<tr>
-								<th><%= attachment_image_tag @user, :profile_image, size:'60x60', format: 'jpeg', fallback: 'no_image.jpg', class: " img-circle pull-left profile-thumb" %></th>
+							<tr height="110">
+								<th class="image"><%= attachment_image_tag @user, :profile_image, size:'70x70', format: 'jpeg', fallback: 'no_image.jpg', class: " img-circle pull-left profile-thumb" %></td>
 								<td><h2><%= @user.name %><h2></td>
 							</tr>
 							<!-- 以下余白間隔調整のため個別にheight設定 -->
