@@ -34,22 +34,22 @@ class UsersController < ApplicationController
       #ログアウト処理
       sign_out user
       redirect_to root_path
-    # else
-      # redirect_to users_path
     end
   end
 
   def followings
     @user = current_user
+    @users = user.following_user
   end
 
   def followeds
     @user = current_user
+    @users = user.followed_user
   end
 
   private
     def user_params
-      #is_deleatedカラム加える??
+      #paranoia使う場合はis_deleated削除
       params.require(:user).permit(:name, :email, :profile_image, :introduction, :is_deleted)
     end
 
@@ -60,10 +60,3 @@ class UsersController < ApplicationController
         end
     end
 end
-
-#ログアウト処理
-# if current_user.sign_out
-       # redirect_to root_path
-    # else
-       # redirect_to users_path
-    # end

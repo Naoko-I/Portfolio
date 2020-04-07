@@ -1,4 +1,6 @@
 class BlogsController < ApplicationController
+  before_action :authenticate_user!,only: [:index, :create, :edit, :update, :destroy]
+
   def new
     @user = current_user
     @blog = Blog.new
