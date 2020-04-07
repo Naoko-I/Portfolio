@@ -11,42 +11,57 @@
 								<th><%= attachment_image_tag @user, :profile_image, size:'60x60', format: 'jpeg', fallback: 'no_image.jpg', class: " img-circle pull-left profile-thumb" %></th>
 								<td><h2><%= @user.name %><h2></td>
 							</tr>
-							<tr>
+							<!-- 以下余白間隔調整のため個別にheight設定 -->
+							<%#= render "devise/shared/error_messages", resource: resource %>
+							<tr height="50">
 								<th>ユーザネーム</th>
 								<td><label for="user_name"></label>
 										<%= f.text_field :name %>
 								</td>
 							</tr>
-							<tr>
+							<tr height="90">
 								<th>自己紹介</th>
 								<td><label for="user_introduction"></label>
 										<%= f.text_area :introduction, :size=>"35x3" %>
 								</td>
 							</tr>
-							<tr>
+							<tr height="70">
 								<th>メールアドレス</th>
 								<td><label for="email"></label>
 										<%= f.text_field :email, :size=>"40x2" %>
 										<p>⚠︎メールアドレスはプロフィールには公開されません</p>
 								</td>
 							</tr>
-							<tr>
-								<th>パスワード</th>
-								<td>現在のパスワード<label for="encrypted_password"></label><br>
-										新しいパスワード
-										<%= f.text_field :reset_password_token, :size=>"25x2" %>
-										<p>⚠︎パスワードはプロフィールには公開されません</p>
+							<tr height="100">
+								<th>パスワード変更<br>
+										<p>(6文字以上)</p>
+								</th>
+								<td>新しいパスワード
+										<%= f.hidden_field :reset_password_token %>
+											<label for="new_password">
+												<% if @minimum_password_length %>
+      										<em>(<%= @minimum_password_length %> characters minimum)</em>
+    										<% end %>
+    										<%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+											</label></br>
+										確認用
+											<label for="password_confirmation">
+												<% if @minimum_password_length %>
+      										<em>(<%= @minimum_password_length %> characters minimum)</em>
+    										<% end %>
+												<%= f.password_field :password_confirmation %>
+											</label>
+											<p>⚠︎パスワードはプロフィールには公開されません</p>
 								</td>
 							</tr>
-							<tr>
+							<tr height="60">
 								<th>プロフィール写真</th>
 								<td><label for="user_profile_image"></label>
 										<%= f.attachment_field :profile_image %>
 								</td>
 							</tr>
 						</table>
-
-							<%= f.submit "送信する", class: "btn btn-primary submit", method: :patch, "data-confirm" => "プロフィールを変更しました" %>
+							<%= f.submit "送信する", class: "btn btn-primary submit", "data-confirm" => "この内容で変更しますか?" %>
 					<% end %>
 				</div>
 			</div>
@@ -55,24 +70,15 @@
 </div>
 
 
-<h2>Change your password</h2>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-  <%= f.hidden_field :reset_password_token %>
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+
+
+
+
+
+
 
 
 

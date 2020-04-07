@@ -1,5 +1,8 @@
 <%= render 'users/header' %>
+
 <div class="container">
+<%= flash[:success] %>
+
   <div class="row">
     <!-- 新着blog表示 -->
     <div class="col-md-offset-1 col-md-6">
@@ -50,8 +53,9 @@
         <% end %>
       </article>
     </div>
-    <!-- side-bar -->
+    <!-- side-bar render -->
     <div class="col-md-offset-1 col-md-4">
+      <%#= render 'users/sidebar' %>
       <div class="sidebar-right">
         <div class="sidebar-heading">
           <table class="current-user-profile">

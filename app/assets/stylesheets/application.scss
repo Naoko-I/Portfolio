@@ -28,7 +28,6 @@ body {
 }
 
 .container {
-  /*background-color: #f8f8f8; */
   margin-top: 30px;
 }
 
@@ -194,7 +193,7 @@ background-color: transparent; /*ブートストラップのデフォルト解�
 
 /* user.index */
 article {
-  margin-bottom : 15px;
+  margin: 25px 0; /* 最後flashメッセージと間隔調整　*/
   background-color: #fff;
   border: 1px solid #cccccc;
 }
@@ -285,15 +284,15 @@ article {
     tr {
       vertical-align: top;
       th {
-        width: 130px;
-        height: 80px;
+        width: 130px; /* widthはHTMLでtr毎に設定　*/
         padding-right: 15px;
         text-align: right;
       }
     }
   }
   .btn {
-  margin-left: 190px;
+    margin-top :30px;
+    margin-left: 190px;
   }
 }
 

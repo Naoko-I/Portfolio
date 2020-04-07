@@ -1,0 +1,61 @@
+<div class="sidebar-right">
+  <div class="sidebar-heading">
+    <table class="current-user-profile">
+      <tr>
+      <th>
+        <%= link_to user_path(current_user) do%>
+          <%= attachment_image_tag current_user, :profile_image, size:'50x50', fallback: 'no_image.jpg', class: "profile-image-circle img-circle pull-left profile-thumb" %>
+        <% end %>
+      </th>
+      <th>
+        <%= link_to "#{current_user.name}", user_path(current_user) %>
+      </th>
+    </tr>
+  </table>
+  </div>
+</div>
+  <!-- following-user一覧 -->
+<div class="relationships-user-list">
+  <div class="user-list-box">
+    <div class="box-heading">
+      <h5>フォロー中</h5>
+      <h5><%= link_to "すべて見る", users_followings_path %></h5>
+    </div>
+    <div class="following-user-list">
+      <ul>
+        <% @followings.each do |following| %>
+          <li>
+            <%= link_to user_path(following) do %>
+            <%= attachment_image_tag current_user.following, :profile_image, size:'20x20', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
+            <% end %>
+          </li>
+          <li>
+            <%= current_user.following.name %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <!--  followed-user一覧 -->
+  <div class="user-list-box">
+    <div class ="box-heading">
+      <h5>フォロワー</h5>
+      <h5><%= link_to "すべて見る", users_followeds_path %></h5>
+    </div>
+    <div class="followed-user-list">
+      <ul>
+        <% @followeds.each do |followed| %>
+          <li>
+            <%= link_to user_path(followed) do %>
+            <%= attachment_image_tag current_user.followed, :profile_image, size:'20x20', format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
+            <% end %>
+          </li>
+          <li>
+            <%= current_user.followed.name %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>

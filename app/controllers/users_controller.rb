@@ -22,7 +22,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if
       @user.update(user_params)
-      redirect_to user_path(@user.id)
+      flash[:success] = "プロフィールを更新しました"
+      redirect_to users_path(@user.id)
     else
       render :edit
     end
@@ -33,9 +34,9 @@ class UsersController < ApplicationController
       #ログアウト処理
       sign_out user
       redirect_to root_path
-    else
-      redirect_to users_path
-  end
+    # else
+      # redirect_to users_path
+    end
   end
 
   def followings
