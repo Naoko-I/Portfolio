@@ -6,20 +6,22 @@
 			<h3>あなたをフォロー中</h3>
 				<div class="common-relationship-box">
 					<table class="follower-user-list">
-            <% @user.followeds.each do |followed| %>
+            <% @followings.each do |following| %>
               <tr>
-              	<td>
-	                <%= link_to user_path(followed) do %>
-	                <%= attachment_image_tag current_user.followed, :profile_image, size:'50x50', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
-                 	<% end %>
-              	</td>
-              	<td>
-                	<%= followed.name %>
-                </td>
+                <%= link_to user_path(following) do %>
+                	<td class>
+  	                <%= attachment_image_tag following.followed, :profile_image, size:'50x50', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
+                	</td>
+                	<td class="name"><%= following.followed.name %></td>
+                <% end %>
                 <td>
-                  <% if @user.id == current_user.id %>
-                    <%= link_to "フォローする", create_relation_path(user_id), method: :post, class: "btn btn-primary", "data-confirm" => "フォローしますか？" %>
+                <%# if current_user != user %>
+                  <% if current_user.unfollow?(user) %>
+                    <%= link_to 'フォローする', create_relation_path(user.id), method: :post, class: "btn btn-primary"  %>
+                  <% else %>
+                    <h4>フォロー中</h4>
                   <% end %>
+                <%# end %>
                 </td>
               </tr>
             <% end %>

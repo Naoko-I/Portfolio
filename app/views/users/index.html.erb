@@ -76,9 +76,9 @@
               <td>
                 <% if current_user != user %>
                   <% if current_user.following?(user) %>
-                    <%= link_to 'フォロー外す', destroy_relation_path(user), method: :post, class: "btn btn-danger" %>
+                    <%= link_to 'フォローを外す', user_destroy_relation_path(user.id), method: :delete, class: "btn btn-danger" %>
                   <% else %>
-                    <%= link_to 'フォローする', create_relation_path(user), method: :delete, class: "btn btn-primary"  %>
+                    <%= link_to 'フォローする', user_create_relation_path(user.id), method: :post, class: "btn btn-primary"  %>
                   <% end %>
                 <% end %>
               </td>

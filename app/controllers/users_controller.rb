@@ -39,12 +39,12 @@ class UsersController < ApplicationController
 
   def followings
     @user = current_user
-    @users = user.following_user
+    @followeds = current_user.followeds
   end
 
   def followeds
     @user = current_user
-    @users = user.followed_user
+    @followings = current_user.followings
   end
 
   private

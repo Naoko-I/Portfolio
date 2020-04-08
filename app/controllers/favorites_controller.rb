@@ -1,7 +1,7 @@
 class FavoritesController < ApplicationController
   def index
-  	user = current_user
-  	@favorites = user.favorites_blog
+  	@user = current_user
+  	@favorites = @user.favorites_blog
   end
 
   def create
@@ -19,7 +19,7 @@ class FavoritesController < ApplicationController
   end
 end
 
-private
+# private
 	# def redirect
 	# case params[:redirect_id].to_i
 	# when 0
@@ -28,4 +28,4 @@ private
 	  # redirect_to blogs_path(@blog)
 	# end
 	# end
-end
+# end

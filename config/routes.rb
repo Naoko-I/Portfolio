@@ -7,19 +7,17 @@ Rails.application.routes.draw do
     resource :blog_comments, only: [:new, :create, :edit, :update, :destroy]
   end
 
-  post '/relationships/:user_id/create' => 'relationships#create', as:'create_relation'
-  delete '/relationships/:user_id/destroy' => 'relationships#destroy', as:'destroy_relation'
-
   # フォローフォロワー一覧ページ作成のため作成
   get '/users/followings' => 'users#followings'
   get '/users/followeds' => 'users#followeds'
 
   devise_for :users
-  resources :users, only: [:index, :create, :show, :edit, :update, :destroy] do
+  resources :users, only: [:index, :show, :edit, :update, :destroy] do
     get "/favorites" => "favorites#index"
-    # 退会確認。論理削除のgem入れたら削除
-    # get '/withdraw' => 'users#withdraw'
+    post '/relationships' => 'relationships#create', as:'create_relation'
+    delete '/relationships' => 'relationships#destroy', as:'destroy_relation'
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
+

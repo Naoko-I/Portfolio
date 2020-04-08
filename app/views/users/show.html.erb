@@ -28,8 +28,8 @@
 					<div class="relationships-count">
 						<ul>
 						  <li>投稿<%= @user.blogs.count %>件</li>
-						  <li><%= link_to "フォロー中#{@user.followeds.count}人", users_followings_path %></li>
-						  <li><%= link_to "フォロワー#{@user.followeds.count}人", users_followings_path %></li>
+						  <li><%= link_to "フォロー中#{@user.followings.count}人", users_followings_path %></li>
+						  <li><%= link_to "フォロワー#{@user.followeds.count}人", users_followeds_path %></li>
 						</ul>
 					</div>
 					<div class="user-introduction">

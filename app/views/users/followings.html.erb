@@ -6,16 +6,17 @@
 			<h3>フォロー中</h3>
 				<div class="common-relationship-box">
 					<table class="following-user-list">
-            <% @user.followings.each do |following| %>
+            <% @followeds.each do |followed| %>
               <tr>
-              	<td>
-	                <%= link_to user_path(following) do %>
-	                <%= attachment_image_tag current_user.following, :profile_image, size:'50x50', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
-                 	<% end %>
-              	</td>
-              	<td>
-                	<%= following.name %>
-                </td>
+                <%= link_to user_path(followed) do %>
+                	<td>
+  	                <%= attachment_image_tag followed.following, :profile_image, size:'50x50', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
+                	</td>
+                	<td class="name"><%= followed.following.name %></td>
+                <% end %>
+                  <td>
+                    <%= link_to 'フォローを外す', user_destroy_relation_path(followed.id), method: :delete, class: "btn btn-danger" %>
+                  </td>
               </tr>
             <% end %>
           </table>

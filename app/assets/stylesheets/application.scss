@@ -188,7 +188,7 @@ header {
 }
 
 .nav li a:hover {
-background-color: transparent; /*ブートストラップのデフォルト解除→link背景色を透明に設定*/
+  background-color: transparent; /*ブートストラップのデフォルト解除→link背景色を透明に設定*/
 }
 
 /* user.index */
@@ -227,11 +227,14 @@ article {
 
 .blog-box, .user-list-box {
   margin: 20px 20px 20px 0;
-  padding: 10px 15px;
+  padding: 10px 20px;
   height: 300px;/* user-list-box用に設定*/
   background-color: #fff;
   border: 1px solid #cccccc;
   border-radius: 8px;
+  .image {
+    width: 70px;
+  }
 }
 
 /* user.show */
@@ -269,7 +272,7 @@ article {
   padding: 20px;
   height: 600px;
   border: 1px solid #cccccc;
-  border-radius: 5px;
+  border-radius: 8px;
   background-color: #fff;
   p {
     font-size: 12px;
@@ -306,13 +309,13 @@ article {
 /* blog.new */
 .caption-heading {
   ul {
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid #cccccc;
-  height : 45px;
-  }
-  li {
     display: inline-block;
+    float: right;
+    border-bottom: 1px solid #cccccc;
+    height : 45px;
+    li {
+      justify-content: space-between;
+    }
   }
 }
 
@@ -322,7 +325,10 @@ article {
   padding: 20px;
   height: 500px;
   border: 1px solid #cccccc;
-  border-radius: 5px;
+  border-radius: 8px;
   background-color: #fff;
 }
 
+.name {
+  font-size: 20px;
+}
