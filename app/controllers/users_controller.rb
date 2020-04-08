@@ -29,9 +29,9 @@ class UsersController < ApplicationController
     end
   end
 
-  def withdraw
-    if current_user.is_deleted
-      #ログアウト処理
+  def destroy
+    @user = User.find(params[:id])
+    if @user.destroy
       sign_out user
       redirect_to root_path
     end
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
   private
     def user_params
       #paranoia使う場合はis_deleated削除
-      params.require(:user).permit(:name, :email, :profile_image, :introduction, :is_deleted)
+      params.require(:user).permit(:name, :email, :profile_image, :introduction)
     end
 
     def correct_user

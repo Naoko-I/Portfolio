@@ -18,9 +18,9 @@
 						      <% if @user.id == current_user.id %>
 							    	<%= link_to "プロフィール編集", edit_user_path(current_user), class: "btn btn-default" %>
 							  	<% elsif @user == current_user.following?(user) %>
-		    						<%= link_to 'フォロ-中', destroy_relation_path(user_id), method: :delete, class: "btn btn-default", "data-confirm" => "フォローを外しますか？" %>
+		    						<%= link_to "フォロ-中", destroy_relation_path(user_id), method: :delete, class: "btn btn-default", "data-confirm" => "フォローを外しますか？" %>
 		  					  <% else %>
-		    					  <%= link_to 'フォローする', create_relation_path(user_id), class: "btn btn-primary" %>
+		    					  <%= link_to "フォローする", create_relation_path(user_id), class: "btn btn-primary" %>
 		  					  <% end %>
 						    </li>
 						</ul>
@@ -40,10 +40,7 @@
 					</div>
 					<div class="user-wirhdraw">
 						<% if @user.id == current_user.id %>
-							<%= form_for(current_user, url: user_path) do | f | %>
-								<%= f.hidden_field :is_deleted, value:true %>
-								<%= f.submit "退会する", class: "btn btn-danger", "data-confirm" => "本当に退会しますか？" %>
-							<% end %>
+							<%= link_to "退会する", user_registration_path, method: :delete, class: "btn btn-danger", "data-confirm" => "本当に退会しますか？" %>
 						<% end %>
 					</div>
 				</div>
@@ -58,11 +55,6 @@
 	</div>
 </div>
 
-<!-- ながのCAKE退会処理コード -->
-<%#= form_for(current_end_user, url: end_user_path) do | f | %>
-			<%#= f.hidden_field :is_deleted, value:true %>
-			<%#= f.submit "退会する", class: "btn btn-danger" %>
-			<%# end %>
 
 
 

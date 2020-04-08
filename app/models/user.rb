@@ -7,9 +7,7 @@ class User < ApplicationRecord
 
   has_many :blogs, dependent: :destroy
   has_many :blog_comments, dependent: :destroy
-
-  # 課題4に記述ないため一旦コメントアウト
-  # has_many :favorites, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   validates :name, presence: true, length: { minimum: 2, maximum: 20}
 

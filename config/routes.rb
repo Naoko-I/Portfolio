@@ -15,10 +15,10 @@ Rails.application.routes.draw do
   get '/users/followeds' => 'users#followeds'
 
   devise_for :users
-  resources :users, only: [:create, :index, :show, :edit, :update] do
+  resources :users, only: [:index, :create, :show, :edit, :update, :destroy] do
     get "/favorites" => "favorites#index"
-    # 退会確認。最終必要なければ削除
-    get '/withdraw' => 'users#withdraw'
+    # 退会確認。論理削除のgem入れたら削除
+    # get '/withdraw' => 'users#withdraw'
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
