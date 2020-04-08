@@ -291,11 +291,14 @@ article {
       }
     }
   }
+  li {
+    margin-bottom: 5px;
+    list-style: none;
+  }
   .image {
-    padding-left : 25px;
+    padding-left: 25px;
   }
   .btn {
-    margin-top :30px;
     margin-left: 190px;
   }
 }

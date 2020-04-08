@@ -7,8 +7,8 @@
 				<div class="edit-form">
 				  <%= form_for(@user) do |f| %>
 						<table>
-							<tr height="110">
-								<th class="image"><%= attachment_image_tag @user, :profile_image, size:'70x70', format: 'jpeg', fallback: 'no_image.jpg', class: " img-circle pull-left profile-thumb" %></td>
+							<tr height="100">
+								<th class="image"><%= attachment_image_tag @user, :profile_image, size:'70x70', format: 'jpeg', fallback: 'no_image.jpg', class: " img-circle pull-left profile-thumb" %></th>
 								<td><h2><%= @user.name %><h2></td>
 							</tr>
 							<!-- 以下余白間隔調整のため個別にheight設定 -->
@@ -32,33 +32,31 @@
 										<p>⚠︎メールアドレスはプロフィールには公開されません</p>
 								</td>
 							</tr>
-							<tr height="100">
-								<th>パスワード変更<br>
+							<tr height="120">
+								<th>パスワード変更<br />
 										<p>(6文字以上)</p>
 								</th>
-								<td>新しいパスワード
-										<%= f.hidden_field :reset_password_token %>
-											<label for="new_password">
-												<% if @minimum_password_length %>
-      										<em>(<%= @minimum_password_length %> characters minimum)</em>
-    										<% end %>
-    										<%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
-											</label></br>
-										確認用
-											<label for="password_confirmation">
-												<% if @minimum_password_length %>
-      										<em>(<%= @minimum_password_length %> characters minimum)</em>
-    										<% end %>
-												<%= f.password_field :password_confirmation %>
-											</label>
-											<p>⚠︎パスワードはプロフィールには公開されません</p>
+								<td><li>現在のパスワード
+	  									<label class="control-label sr-only" for="inputEmail"></label>
+	    									<%= f.password_field :current_password, autocomplete: "current-password" %>
+	    							</li>
+	    							<li>新しいパスワード
+											<label class="control-label sr-only" for="inputEmail"></label>
+	  										<%= f.password_field :password, autofocus: true, autocomplete: "new-password" %><br />
+	    										<% if @minimum_password_length %><br />
+	      										<em><%= @minimum_password_length %>文字以上</em>
+	    										<% end %>
+	    							</li>
+										<li>確認用
+											<label class="control-label sr-only" for="inputEmail"></label>
+												<%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+												<p>⚠︎パスワードはプロフィールには公開されません</p>
+										</li>
 								</td>
 							</tr>
 							<tr height="60">
 								<th>プロフィール写真</th>
-								<td><label for="user_profile_image"></label>
-										<%= f.attachment_field :profile_image %>
-								</td>
+								<td><%= f.attachment_field :profile_image %></td>
 							</tr>
 						</table>
 							<%= f.submit "送信する", class: "btn btn-primary submit", "data-confirm" => "この内容で変更しますか?" %>
@@ -68,14 +66,6 @@
 		</div>
 	</div>
 </div>
-
-<!-- パスワード再設定用にdevise viewからコピー -->
-<!-- <label class="control-label sr-only" for="inputEmail"></label> -->
-  <%#= f.password_field :password, autocomplete: "off", class:"form-control", id:"inputPassword", placeholder:"パスワード(6文字以上)" %>
-<!-- <label class="control-label sr-only" for="inputEmail"></label> -->
-  <%#= f.password_field :password_confirmation, autocomplete: "off", class:"form-control", id:"inputConfirmPassword", placeholder:"パスワード確認" %>
-
-
 
 
 
