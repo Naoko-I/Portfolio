@@ -22,7 +22,8 @@ class BlogsController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @blog = Blog.find(params[:id])
+    # @blog.user = User.find(params[:id])
   end
 
   def edit

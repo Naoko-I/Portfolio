@@ -17,16 +17,16 @@
   <% if user_signed_in? %>
     <ul class="nav navbar-nav navbar-right">
       <li>
-        <%= link_to "", users_path, class: "glyphicon glyphicon-home fa-2x" %>
+        <%= link_to "", users_path, class: "glyphicon glyphicon-home" %>
       </li>
       <li>
-        <%= link_to "", new_blog_path, class: "fa fa-paper-plane fa-2x" %>
+        <%= link_to "", new_blog_path, class: "fa fa-paper-plane" %>
       </li>
       <li>
-        <%= link_to "", user_favorites_path(current_user), class: "glyphicon glyphicon-heart-empty fa-2x" %>
+        <%= link_to "", user_favorites_path(current_user), class: "glyphicon glyphicon-heart-empty" %>
       </li>
       <li>
-        <%= link_to "", destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out fa-2x" %>
+        <%= link_to "", destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out" %>
       </li>
     </ul>
     <div class="nav navbar-right image">

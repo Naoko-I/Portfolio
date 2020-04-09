@@ -186,6 +186,9 @@ header {
   a {
     color: #fff;
   }
+  li {
+    font-size: 28px;
+  }
 }
 
 .nav li a:hover {
@@ -194,10 +197,27 @@ header {
 
 /* user.index */
 article {
-  margin: 25px 0; /* 最後flashメッセージと間隔調整　*/
+  margin: 20px 0; /* 最後flashメッセージと間隔調整　*/
+  padding: 15px 20px;
+  height: 700px;
   background-color: #fff;
   border: 1px solid #cccccc;
+  .user-name {
+    font-size: 25px;
+    padding: 0 190px 0 15px;
+  }
 }
+  .blog-main {
+    /*blog写真の大きさ設定のためテストで記述　width: auto; */
+    /*blog写真の大きさ設定のためテストで記述　height: auto;*/
+    margin: 15px;
+  }
+  .blog-icon {
+    span {
+    font-size: 20px;
+    padding-right: 12px;
+    }
+  }
 
 .sidebar-right {
   padding-left: 15px;
@@ -225,7 +245,8 @@ article {
 .blog-box, .user-list-box {
   margin: 20px 20px 20px 0;
   padding: 10px 20px;
-  height: 300px;/* user-list-box用に設定*/
+  min-height: 300px;/* user-list-box用に設定*/
+  overflow: hidden;
   background-color: #fff;
   border: 1px solid #cccccc;
   border-radius: 8px;
@@ -324,7 +345,8 @@ article {
 .common-relationship-box { /* common-user-boxと共通にできれば1つにまとめる */
   margin-top: 20px;
   padding: 20px 30px;
-  height: 600px;
+  min-height: 600px; /* スクロール実装のためminを設定 */
+  overflow: scroll; /* スクロール */
   border: 1px solid #cccccc;
   border-radius: 8px;
   background-color: #fff;
