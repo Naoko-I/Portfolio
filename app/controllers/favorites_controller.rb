@@ -1,12 +1,13 @@
 class FavoritesController < ApplicationController
   def index
   	@user = current_user
-  	@favorites = @user.favorites_blog
+  	@favorite = @user.favorites_blog(params[:blog_id])
+    # @favorites = Blog.find.current_user.favorites(params[:blog_id])
   end
 
   def create
   	@blog = Blog.find(params[:blog_id])
-  	favorites = @blog.favorites.new(user_id: current_user.id)
+  	favorite = @blog.favorites.new(user_id: current_user.id)
   	favorite.save
     redirect_to request.referer
   end
@@ -19,6 +20,7 @@ class FavoritesController < ApplicationController
   end
 end
 
+#応用課題
 # private
 	# def redirect
 	# case params[:redirect_id].to_i
