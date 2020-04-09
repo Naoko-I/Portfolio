@@ -7,10 +7,11 @@ class BlogsController < ApplicationController
   end
 
   def create
-    @blog = Blog.new
+    @blog = Blog.new(blog_params)
     @blog.user_id = current_user.id
     if
-      @blog.save(blog_params)
+      @blog.save
+      flash[:success] = "投稿が完了しました"
       redirect_to users_path(current_user)
     else
       render :new

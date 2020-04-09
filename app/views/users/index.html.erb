@@ -34,24 +34,18 @@
                   <span class="glyphicon glyphicon-heart"><%= blog.favorites.count%></span>
                   <% end %>
                 <% else %>
-                  <%= link_to blog_favorites_path(book, redirect_id: 0), method: :post do %>
+                  <%= link_to blog_favorites_path(blog, redirect_id: 0), method: :post do %>
                    <%#= fa_icon "heart-o", text: "#{book.favorites.count}", style: "color: red;" %>
                   <span class="glyphicon glyphicon-heart-empty"><%= blog.favorites.count %></span>
                   <% end %>
                 <% end %>
               </li>
               <li>
-                <span class="far fa-comment"><%= blog.comments.count %>
+                <span class="far fa-comment"><%= blog.blog_comments.count %>
               </li>
             </ul>
 
-            <div class="new-comment-form">
-              <%= form_for [@blog, @blog_comment] do |f| %>
-                <input class="form-control mr-sm-3" type="text" placeholder="Commnets" aria-label="Comments">
-                <%= f.text_area :comment %>
-                <%= f.submit "投稿する", blog_blog_comments_path, method: :patch, "data-confirm" => "このコメントを投稿しますか?" %>
-              <% end %>
-            </div>
+            <!-- コメントについての記述カット -->
           </div>
       </article>
         <% end %>
