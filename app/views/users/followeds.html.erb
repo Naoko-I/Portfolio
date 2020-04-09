@@ -5,11 +5,11 @@
 		<div class="col-md-offset-3 col-md-6 col-md-offset-3 ">
 			<h3>あなたをフォロー中</h3>
 				<div class="common-relationship-box">
-					<table class="follower-user-list">
+					<table class="user-list">
             <% @followings.each do |following| %>
               <tr>
                 <%= link_to user_path(following) do %>
-                	<td class>
+                	<td class="image">
   	                <%= attachment_image_tag following.followed, :profile_image, size:'50x50', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
                 	</td>
                 	<td class="name"><%= following.followed.name %></td>

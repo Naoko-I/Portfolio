@@ -36,6 +36,7 @@ class BlogsController < ApplicationController
       redirect_to users_path(@user.id)
     else
       render :edit
+    end
   end
 
   def destroy

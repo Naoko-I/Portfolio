@@ -3,30 +3,27 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-offset-3 col-md-6 col-md-offset-3 ">
-			<div class="common-user-box">
-				<div class="caption">
-				　<%= form_for(@blog) do |f| %>
-						<nav class="caption-nav">
-							<ul>
-								<li>
-									<%= link_to '', users_path, class: "glyphicon glyphicon-camera fa-2x" %>
-									<%= attachment_image_tag @blog, :image, size:'200x250', format: 'jpeg' %>
-								</li>
-								<li>新規投稿</li>
-								<li>
-									<%= f.submit "投稿する", class: "btn btn-primary", method: :post, "data-confirm" => "この内容で投稿しますか？" %>
-									<!-- 入力エラーの場合if文でエラー表示 -->
-								</li>
-							</ul>
-						</nav>
-
-						<div class="caption-body">
-							<%= f.label :body %>
-	    				<%= f.text_area :body, class: 'col-xs-12 book_body'%>
+			<%= form_for(@blog) do |f| %>
+				<div class="common-user-box">
+					<div class="caption-title">新規投稿</div>
+						<div class="field">
+							<%= f.label :写真を選択, class: "glyphicon glyphicon-camera" %>
+							<%= f.attachment_field :image, size:'200x250', format: 'jpeg' %>
 						</div>
-					<% end %>
+
+						<div class="field">
+							<%= f.label :本文を入力 %>
+	    				<%= f.text_area :body, size: "70x10" %>
+	    			</div>
+
+						<div class="caption-submit">
+							<%= f.submit "投稿する", class: "btn btn-primary", method: :post, "data-confirm" => "この内容で投稿しますか？" %>
+								<!-- 入力エラーの場合バリデーションかエラー文 -->
+						</div>
+					</div>
 				</div>
-			</div>
+			<% end %>
 		</div>
 	</div>
 </div>
+
