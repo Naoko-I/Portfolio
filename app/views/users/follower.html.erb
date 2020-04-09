@@ -1,0 +1,33 @@
+<%= render 'users/header' %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-offset-3 col-md-6 col-md-offset-3 ">
+			<h3>フォロー中</h3>
+				<div class="common-relationship-box">
+					<table class="user-list">
+            <% @user.following_user.where.not(id: current_user.id).each do |user| %>
+              <% @followers.each do |follower| %>
+                <tr>
+                  <td class="image">
+                    <%= link_to user_path(follower) do %>
+    	                <%= attachment_image_tag follower, :profile_image, size:'50x50', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
+                    <% end %>
+                  </td>
+                  <td class="name"><%= link_to "#{current_user.follower.name}", user_path(@followers) %></td>
+                    <td>
+                      <% if current_user.following?(user) %>
+                        <%= link_to 'フォローを外す', unfollow_path(user.id), method: :post, class: "btn btn-danger" %>
+                      <% end %>
+                    </td>
+                </tr>
+              <% end %>
+            <% end %>
+          </table>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- attachment_image_tag following.followed -->

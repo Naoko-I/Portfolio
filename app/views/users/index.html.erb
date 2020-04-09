@@ -1,82 +1,37 @@
 <%= render 'users/header' %>
 
 <div class="container">
-  <%= flash[:success] %>
-
   <div class="row">
-  <!-- 新着blog表示 -->
-    <div class="col-md-offset-1 col-md-6">
-      <% @blogs.each do |blog| %>
-        <article class="new-arriving-blog clearfix">
-          <div class="article-header">
-            <table>
-                <tr>
-                  <%= link_to user_path(blog.user.id) do %>
-                    <td><%= attachment_image_tag blog.user, :profile_image, size:'50x50', format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
-                    </td>
-                    <td class="user-name"><%= blog.user.name %></td>
+    <div class="col-md-offset-1 col-md-4">
+      <h2>テスト用ユーザ表示</h2>
+        <table>
+          <% @users.each do |user| %>
+            <tr>
+                <td>
+                  <%= link_to user_path(user) do %>
+                    <%= attachment_image_tag user, :profile_image, size:'60x60', format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
                   <% end %>
-                    <td><%= blog.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
-                </tr>
-            </table>
-          </div>
-
-          <div class="blog-main">
-            <%= link_to blog_path(blog.id) do %>
-              <%= attachment_image_tag blog, :image, size:'480x400' %>
-            <% end %><br />
-            <%= blog.body %>
-          </div>
-
-          <div class="article-footer">
-            <div class="blog-icon">
-              <% if current_user != blog.user %>
-                <% if blog.favorited_by?(current_user) %>
-                  <%= link_to blog_favorites_path(blog, redirect_id: 0), method: :delete do %>
-                    <span class="fa fa-heart" style="color: red;"><%= blog.favorites.count%></span>
+                </td>
+                <td><%= user.name %></td>
+              <!-- フォローフォロワー機能 -->
+                <td>
+                  <% if current_user != user %>
+                    <% if current_user.following?(user) %>
+                      <%= link_to 'フォローを外す', unfollow_path(user.id), method: :post, class: "btn btn-danger" %>
+                    <% else %>
+                      <%= link_to 'フォローする', follow_path(user.id), method: :post, class: "btn btn-primary"  %>
+                    <% end %>
                   <% end %>
-                <% else %>
-                  <%= link_to blog_favorites_path(blog, redirect_id: 0), method: :post do %>
-                    <span class="fa fa-heart-o"><%= blog.favorites.count %>いいね</span>
-                  <% end %>
-                <% end %>
-                <span class="fa fa-comment"><%= blog.blog_comments.count %>コメント</span>
-                <!-- コメントについての記述カット中 -->
-              <% end %>
-            </div>
-          </div>
-
-      </article>
-        <% end %>
+                </td>
+              </tr>
+          <% end %>
+        </table>
     </div>
 
-    <!-- side-bar 部分テンプレート -->
     <div class="col-md-offset-1 col-md-4">
-      <%= render 'users/sidebar' %>
+      <%= link_to "blog.indexへ", blogs_path %>
     </div>
   </div>
 </div>
-<!-- </div> -->
 
-      テスト用ユーザ表示
-      <table>
-        <% @users.each do |user| %>
-          <tr>
-            <%= link_to user_path(user) do %>
-              <td>
-                <%= attachment_image_tag user, :profile_image, size:'60x60', format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %></td>
-              <td><%= user.name %></td>
-             <% end %>
-            <!-- フォローフォロワー機能 -->
-              <td>
-                <% if current_user != user %>
-                  <% if current_user.following?(user) %>
-                    <%= link_to 'フォローを外す', user_destroy_relation_path(user.id), method: :delete, class: "btn btn-danger" %>
-                  <% else %>
-                    <%= link_to 'フォローする', user_create_relation_path(user.id), method: :post, class: "btn btn-primary"  %>
-                  <% end %>
-                <% end %>
-              </td>
-          </tr>
-        <% end %>
-      </table>
+

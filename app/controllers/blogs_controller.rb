@@ -6,6 +6,13 @@ class BlogsController < ApplicationController
     @blog = Blog.new
   end
 
+  def index
+    @blogs = Blog.all
+    @followers = current_user.following_user
+    @followeds = current_user.follower_user
+    @blog_comments = BlogComment.new
+  end
+
   def create
     @blog = Blog.new(blog_params)
     @blog.user_id = current_user.id
@@ -18,8 +25,6 @@ class BlogsController < ApplicationController
     end
   end
 
-  def index
-  end
 
   def show
     @blog = Blog.find(params[:id])

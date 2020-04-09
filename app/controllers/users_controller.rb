@@ -4,10 +4,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    @blogs = Blog.all
-    @followings = current_user.followings
-    @followeds = current_user.followeds
-    @blog_comment = BlogComment.new
+    # @user = User.find(params[:id])
   end
 
   def show
@@ -20,8 +17,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if
-      @user.update(user_params)
+    if @user.update(user_params)
       flash[:success] = "プロフィールを更新しました"
       redirect_to users_path(@user.id)
     else
@@ -37,25 +33,24 @@ class UsersController < ApplicationController
     end
   end
 
-  def followings
-    @user = current_user
-    @followeds = current_user.followeds
+  def follower
+    @user = User.find(params[:id])
+    @followers = current_user.following_user
   end
 
-  def followeds
-    @followings = current_user.followings
+  def followed
+    @user = User.find(params[:id])
+    @followeds = current_user.follower_user
   end
 
   private
     def user_params
-      #paranoia使う場合はis_deleated削除
       params.require(:user).permit(:name, :email, :profile_image, :introduction)
     end
 
     def correct_user
-      @user = User.find(params[:id])
-        if @user.id != current_user.id
-          redirect_to user_path(current_user)
-        end
+      unless params[:id].to_i == current_user.id
+        redirect_to user_path(current_user)
+      end
     end
 end

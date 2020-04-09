@@ -18,17 +18,17 @@
     <div class="user-list-box">
       <div class="box-heading">
         <h5>フォロー中</h5>
-        <h5><%= link_to "すべて見る", users_followings_path %></h5>
+        <h5><%= link_to "すべて見る", users_follower_path %></h5>
       </div>
       <table class="followed-user-list">
-        <% @followeds.each do |followed| %>
+        <% @followers.each do |follower| %>
           <tr>
             <td class="image">
-              <%= link_to user_path(followed) do %>
-              <%= attachment_image_tag followed.following, :profile_image, size:'40x40', format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
+              <%= link_to user_path(follower) do %>
+                <%= attachment_image_tag follower, :profile_image, size:'40x40', format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
               <% end %>
             </td>
-            <td class="name"><%= followed.following.name %></td>
+            <td class="name"><%= link_to "#{follower.name}", user_path(@followers) %></td>
           </tr>
         <% end %>
       </table>
@@ -37,17 +37,17 @@
     <div class="user-list-box">
       <div class ="box-heading">
         <h5>フォロワー</h5>
-        <h5><%= link_to "すべて見る", users_followeds_path %></h5>
+        <h5><%= link_to "すべて見る", users_followed_path %></h5>
       </div>
       <table class="following-user-list">
-        <% @followings.each do |following| %>
+        <% @followeds.each do |followed| %>
           <tr>
             <td class="image">
-              <%= link_to user_path(following) do %>
-              <%= attachment_image_tag following.followed, :profile_image, size:'40x40', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
+              <%= link_to user_path(followed) do %>
+                <%= attachment_image_tag followed, :profile_image, size:'40x40', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
               <% end %>
             </td>
-            <td class="name"><%= following.followed.name %></td>
+            <td class="name"><%= link_to "#{followed.name}", user_path(@followeds) %></td>
           </tr>
         <% end %>
       </table>

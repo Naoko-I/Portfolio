@@ -14,13 +14,12 @@
 							  <h1><%= @user.name %></h1>
 							</li>
 						  	<li>
-						  		<!-- テストユーザで表示確認 -->
-						      <% if @user.id == current_user.id %>
+						      <% if @user == current_user %>
 							    	<%= link_to "プロフィール編集", edit_user_path(current_user), class: "btn btn-default" %>
-							  	<% elsif @user == current_user.following?(@user) %>
-		    						<%= link_to "フォロー中", class: "btn btn-primary" %>
+							  	<% elsif current_user.following?(@user) %>
+		    						<%= link_to "フォローを外す", unfollow_path(@user.id), method: :post, class: "btn btn-danger" %>
 		  					  <% else %>
-		    					  <%= link_to "フォローする", user_create_relation_path(@user_id), method: :post, class: "btn btn-primary" %>
+		    					  <%= link_to "フォローする", follow_path(@user_id), method: :post, class: "btn btn-primary" %>
 		  					  <% end %>
 						    </li>
 						</ul>
@@ -28,15 +27,15 @@
 					<div class="relationships-count">
 						<ul>
 						  <li>投稿<%= @user.blogs.count %>件</li>
-						  <li><%= link_to "フォロー中#{@user.followings.count}人", users_followings_path %></li>
-						  <li><%= link_to "フォロワー#{@user.followeds.count}人", users_followeds_path %></li>
+						  <li><%= link_to "フォロー中#{@user.follower.count}人", users_follower_path %></li>
+						  <li><%= link_to "フォロワー#{@user.followed.count}人", users_followed_path %></li>
 						</ul>
 					</div>
 					<div class="user-introduction">
 						<%= @user.introduction %>
 					</div>
 					<div class="user-wirhdraw">
-						<% if @user.id == current_user.id %>
+						<% if @user == current_user %>
 							<%= link_to "退会する", user_registration_path, method: :delete, class: "btn btn-danger", "data-confirm" => "本当に退会しますか？" %>
 						<% end %>
 					</div>
@@ -53,6 +52,9 @@
 		</div>
 	</div>
 </div>
+
+
+
 
 
 
