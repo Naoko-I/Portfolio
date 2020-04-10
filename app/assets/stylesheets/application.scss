@@ -132,7 +132,7 @@ section {
 }
 
 h1, h5 {
-  font-family: "Didot";
+  font-family: 'Didot';
   font-weight: bold;
 }
 
@@ -177,7 +177,7 @@ header {
 .search {
   display: inline-block;
   float : left;
-  padding: 25px 280px;
+  padding: 25px 290px;
   color: #000;
  }
 
@@ -199,7 +199,7 @@ header {
 article {
   margin: 20px 0; /* 最後flashメッセージと間隔調整　*/
   padding: 15px 20px;
-  height: 700px;
+  height: 650px;
   background-color: #fff;
   border: 1px solid #cccccc;
   .user-name {
@@ -375,6 +375,35 @@ article {
     font-size: 20px;
   }
 }
+
+/* favorites.index */
+#blog-page {
+  width: 100%;
+}
+
+.slide {
+  margin: 40px;
+}
+
+.page-title {
+  margin: 10px 0 0 50px;
+  font-size: 25px;
+}
+
+.slide-wrap {
+   margin: 20px;
+   zoom: 85%;
+   display: -webkit-box;
+   display: -ms-flexbox;
+   display: flex;
+   overflow-x: scroll;
+   overflow-scrolling: touch;
+   scroll-behavior: smooth;
+   scroll-snap-type: x mandatory;
+   /*-webkit-overflow-scrolling: touch; ブラウザに応じて適用*/
+}
+
+
 
 
 

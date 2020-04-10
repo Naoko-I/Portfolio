@@ -23,7 +23,7 @@
         <%= link_to "", new_blog_path, class: "fa fa-paper-plane" %>
       </li>
       <li>
-        <%= link_to "", user_favorites_path(current_user), class: "glyphicon glyphicon-heart-empty" %>
+        <%= link_to "", blog_favorites_index_path(current_user), class: "glyphicon glyphicon-heart-empty" %>
       </li>
       <li>
         <%= link_to "", destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out" %>
