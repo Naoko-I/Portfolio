@@ -347,6 +347,11 @@ article {
   text-align: center;
 }
 
+/* blog.index */
+/*.col-md-offset-1.col-md-4 { サイドバー固定。view崩れる*/
+  /*position: fixed;*/
+/*}*/
+
 /* follow,follower.index */
 .common-relationship-box { /* common-user-boxと共通にできれば1つにまとめる */
   margin-top: 20px;
@@ -370,5 +375,6 @@ article {
     font-size: 20px;
   }
 }
+
 
 

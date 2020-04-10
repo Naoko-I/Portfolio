@@ -25,7 +25,6 @@ class BlogsController < ApplicationController
     end
   end
 
-
   def show
     @blog = Blog.find(params[:id])
     # @blog.user = User.find(params[:id])
@@ -47,11 +46,12 @@ class BlogsController < ApplicationController
   end
 
   def destroy
-    @blog = Blog.find(params[:id])
+    @blog = Blog.find(params[:user_id])
     @blog.destroy
     flash[:success] = "投稿を削除しました"
     redirect_to users_path(@user.id)
   end
+
 
   private
   def blog_params

@@ -8,15 +8,15 @@ Rails.application.routes.draw do
   end
 
   # フォローフォロワー一覧ページ作成のため作成
-  get '/users/follower' => 'users#follower'
-  get '/users/followed' => 'users#followed'
-  post 'follow/:id' => 'relationships#follow', as: 'follow' # フォローする
-  post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow' # フォロー外す
+  # get '/users/follower' => 'users#follower'
+  # get '/users/followed' => 'users#followed'
 
   devise_for :users
   resources :users, only: [:index, :show, :edit, :update, :destroy] do
+    resource :relationships, only: [:create, :destroy]
     get 'favorites' => 'favorites#index'
-
+    get 'follows' => 'relationships#follower', as: 'follows' # フォローする
+    get 'followers' => 'relationships#followed', as: 'unfollows' # フォロー外す
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
