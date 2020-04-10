@@ -1,7 +1,8 @@
 class FavoritesController < ApplicationController
   def index
     @blog = Blog.find(params[:blog_id])
-    @favorites = current_user.favorites.find_by(blog_id: @blog.id, user_id: current_user.id)
+    @blogs = current_user.favorites.find_by(blog_id: @blog.id, user_id: current_user.id)
+    # ↑エラー回復後に6行目削除
     @blogs = Blog.all
   end
 

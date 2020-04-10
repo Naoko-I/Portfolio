@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController
-  before_action :authenticate_user!,only: [:index, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:index, :create, :edit, :update, :destroy]
 
   def new
     @user = current_user
@@ -19,7 +19,7 @@ class BlogsController < ApplicationController
     if
       @blog.save
       flash[:success] = "投稿が完了しました"
-      redirect_to users_path(current_user)
+      redirect_to blogs_path
     else
       render :new
     end
@@ -39,7 +39,7 @@ class BlogsController < ApplicationController
     if
       @user.update(blog_params)
       flash[:success] = "投稿内容を更新しました"
-      redirect_to users_path(@user.id)
+      redirect_to blogs_path
     else
       render :edit
     end
@@ -49,7 +49,7 @@ class BlogsController < ApplicationController
     @blog = Blog.find(params[:user_id])
     @blog.destroy
     flash[:success] = "投稿を削除しました"
-    redirect_to users_path(@user.id)
+    redirect_to blogs_path
   end
 
 

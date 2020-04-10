@@ -1,69 +1,69 @@
 <%= render 'users/header' %>
 
-<div class="container">
+<div class="container" id="blog-page">
 	<%= flash[:notice] %>
-		<div class="row">
-			<div class="page-left">
-				<div class="user-image col-md-1">
+		<!-- <div class="row"> -->
+			<!-- <div class="page-left"> -->
+				<div class="col-md-offset-3 col-md-1 user-image">
 					<%= attachment_image_tag @user, :profile_image, size:"130x130", class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
 				</div>
-				<div class="col-md-5">
-					<div class="user-data">
-						<div class="user-profile">
-							<ul>
-								<li>
-								  <h1><%= @user.name %></h1>
-								</li>
-							  	<li>
-							      <% if @user == current_user %>
-								    	<%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-default" %>
-								    <% end %>
+					<div class="col-md-5">
+						<div class="user-data">
+							<div class="user-profile">
+								<ul>
+									<li>
+									  <h1><%= @user.name %></h1>
+									</li>
+									<li>
+								 		<% if @user == current_user %>
+									  	<%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-default" %></li>
+									  	<%= link_to "退会する", user_registration_path, method: :delete, class: "btn btn-danger", data: {confirm: "本当に退会しますか？" } %>
+										<% end %>
+									</li>
+									<li>
 								  	<% if current_user != @user %>
 								  		<% if current_user.following?(@user) %>
 			    							<%= link_to 'フォローを外す', user_relationships_path(@user.id), method: :delete, class: "btn btn-danger", data: {confirm: "フォローを外しますか？" } %>
-	                    <% else %>
+		                  <% else %>
 												<%= link_to 'フォローする', user_relationships_path(@user.id), method: :post, class: "btn btn-primary" %>
-	                    <% end %>
+		                  <% end %>
 			  					  <% end %>
-							    </li>
-							</ul>
-						</div>
-						<div class="relationships-count">
-							<ul>
-							  <li>投稿<%= @user.blogs.count %>件</li>
-							  <li><% if @user == current_user %>
-							  			<%= link_to "フォロー中#{@user.follower.count}人", user_follows_path(@user) %>
-							  		<% else %>
-							  			フォロー中<%= @user.follower.count %>人
-							  		<% end %>
-							  </li>
-								<li><% if @user == current_user %>
-							  			<%= link_to "フォロワー#{@user.followed.count}人", user_unfollows_path(@user) %>
-							  		<% else %>
-							  			フォロワー<%= @user.followed.count %>人
-							  		<% end %>
-							  </li>
-							</ul>
-						</div>
-						<div class="user-introduction">
-							<%= @user.introduction %>
-						</div>
-						<div class="user-wirhdraw">
-							<% if @user == current_user %>
-								<%= link_to "退会する", user_registration_path, method: :delete, class: "btn btn-danger", data: {confirm: "本当に退会しますか？" } %>
-							<% end %>
+								  </li>
+								</ul>
+							</div>
+							<div class="relationships-count">
+								<ul>
+								  <li>投稿<%= @user.blogs.count %>件</li>
+								  <li><% if @user == current_user %>
+								  			<%= link_to "フォロー中#{@user.follower.count}人", user_follows_path(@user) %>
+								  		<% else %>
+								  			フォロー中<%= @user.follower.count %>人
+								  		<% end %>
+								  </li>
+									<li><% if @user == current_user %>
+								  			<%= link_to "フォロワー#{@user.followed.count}人", user_unfollows_path(@user) %>
+								  		<% else %>
+								  			フォロワー<%= @user.followed.count %>人
+								  		<% end %>
+								  </li>
+								</ul>
+							</div>
+							<div class="user-introduction">
+								<%= @user.introduction %>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			<!-- 自分の投稿ブログ一覧 -->
+			<div class="row" id="user">
+				<% if current_user == @user %>
+					<p>My 投稿一覧</p>
+				<% else %>
+					<p>ユーザー投稿一覧</p>
+				<% end %>
 
-			<div class="col-md-offset-1 col-md-5">
-				<div class="blogs-by-user">
-					<%#= @blogs.each do |blog| %>
-	        <%# end %>
-					<!-- user indexのブログ一覧とほぼ共通フォーマット -->
-				</div>
+				<%= render 'users/blog' %>
 			</div>
-		</div>
 	</div>
+</div>
 

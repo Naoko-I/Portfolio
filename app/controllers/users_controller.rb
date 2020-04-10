@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @blogs = @user.blogs
   end
 
   def edit
@@ -19,7 +20,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:success] = "プロフィールを更新しました"
-      redirect_to users_path(@user.id)
+      redirect_to blogs_path
     else
       render :edit
     end

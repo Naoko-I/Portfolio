@@ -28,7 +28,7 @@ body {
 }
 
 .container {
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .container.devise {
@@ -262,19 +262,15 @@ article {
 }
 
 /* user.show */
-.page-left {
-  position: sticky;
-}
-
 .user-data {
   margin-left: 30px;
+  padding-left: 40px;
   display: block;
   float: left;
-  padding-left: 50px;
   li {
     display: inline-block;
-    padding: 0 20px 10px 0;
-    font-size: 18px;
+    padding: 0 25px 10px 0;
+    font-size: 17px;
   }
 }
 
@@ -283,15 +279,12 @@ article {
 }
 
 .user-introduction {
-  width: 200px;
-  height: 100px;
+  width: 230px;
+  height: 80px;
 }
 
-.user-wirhdraw {
-  margin-top: 30px;
-}
-
-.common-user-box { /* user.edit,user共通ページ内で使用box*/
+/* user.edit */
+.common-user-box { /* user共通ページ内共通で使用*/
   margin-top: 20px;
   padding: 20px;
   height: 600px;
@@ -304,7 +297,6 @@ article {
   }
 }
 
-/* user.edit */
 .edit-form {
   margin: 15px 0 0 30px;
   table {
@@ -376,13 +368,9 @@ article {
   }
 }
 
-/* favorites.index */
+/* favorites.index,user.show一部共通 */
 #blog-page {
   width: 100%;
-}
-
-.slide {
-  margin: 40px;
 }
 
 .page-title {
@@ -390,8 +378,12 @@ article {
   font-size: 25px;
 }
 
+.slide {
+  margin: 40px;
+}
+
 .slide-wrap {
-   margin: 20px;
+   /*margin: 20px;*/
    zoom: 85%;
    display: -webkit-box;
    display: -ms-flexbox;
@@ -402,6 +394,18 @@ article {
    scroll-snap-type: x mandatory;
    /*-webkit-overflow-scrolling: touch; ブラウザに応じて適用*/
 }
+
+#user {
+  margin-top: 40px;
+  width: 100%;
+  zoom: 75%;
+  border-top: 1px solid #cccccc;
+    p {
+      margin: 20px 0  0 50px;
+      font-size: 25px;
+    }
+}
+
 
 
 
