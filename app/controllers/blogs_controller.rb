@@ -26,7 +26,10 @@ class BlogsController < ApplicationController
   end
 
   def show
+    # @user = User.find(params[:user_id])
     @blog = Blog.find(params[:id])
+    @blogs = Blog.all
+    @blog_comments = @blog.blog_comments
     # @blog.user = User.find(params[:id])
   end
 
@@ -56,5 +59,9 @@ class BlogsController < ApplicationController
   private
   def blog_params
     params.require(:blog).permit(:body, :image)
+  end
+
+  def blog_comment_params
+    params.require(:blog_comment).permit(:body)
   end
 end

@@ -90,7 +90,7 @@ a:hover {
 
 /* sign up,log in */
 section {
-	margin-top: 160px;
+  margin-top: 160px;
 }
 
 .form-heading, .text-center {
@@ -107,9 +107,9 @@ section {
 }
 
 .form-footer {
-	margin-top : 15px;
+  margin-top : 15px;
   line-height: 1.7;
-	color: #fff;
+  color: #fff;
   font-size : 20px;
   a {
     color: #fff;
@@ -121,7 +121,7 @@ section {
 
 /* about */
 #about {
-	background-image: image-url("yohann-libot-NgRMY9QcnhE-unsplash.jpg");
+  background-image: image-url("yohann-libot-NgRMY9QcnhE-unsplash.jpg");
   background-size: cover;
   width: 100%;
   opacity: 1.0;
@@ -137,14 +137,14 @@ h1, h5 {
 }
 
 p {
-	line-height: 1.8;
+  line-height: 1.8;
 }
 
 .text-space {
-	width: 750px;
-	height: 300px;
-	padding: 15px 20px;
-	background-color:rgba(255,255,255,0.6);
+  width: 750px;
+  height: 300px;
+  padding: 15px 20px;
+  background-color:rgba(255,255,255,0.6);
 }
 
 .info-link {
@@ -409,8 +409,10 @@ article {
     }
 }
 
-
-
-
-
-
+/* blog.show */
+.comment-box {
+  width: 570px; /* col-1.6で内maxサイズ　*/
+  min-height: 500px;
+  background-color: #fff;
+  border: 1px solid #cccccc;
+}
