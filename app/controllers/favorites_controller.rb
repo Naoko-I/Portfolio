@@ -1,9 +1,10 @@
 class FavoritesController < ApplicationController
   def index
     @blog = Blog.find(params[:blog_id])
-    @blogs = current_user.favorites.find_by(blog_id: @blog.id, user_id: current_user.id)
-    # ↑エラー回復後に6行目削除
-    @blogs = Blog.all
+    # blog_idのみを引っ張ってくるためselectメソッドを使用
+    favoriteList = Favorite.where(user_id: current_user.id).select([:blog_id])
+    @blogs = Blog.where(id: favoriteList)
+
   end
 
   def create

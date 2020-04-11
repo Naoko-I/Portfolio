@@ -1,21 +1,18 @@
 class BlogCommentsController < ApplicationController
-  before_action :authenticate_user!
-  # ,only: [:index, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!,only: [:index, :create, :edit, :update, :destroy]
 
   def new
-    @comment = BlogComment.new
+    @blog_comment = BlogComment.new
   end
 
   def create
-    @book = Book.find(params[:blog_id])
-    @comment = BlogComment.new
-    @blog_comment = @blog.blog_comments.new(blog_comment_params)
-    @blog_comment.user_id = current_user.id
-    if @comment.save(blog_comment_params)
+    @blog = Blog.find(params[:blog_id])
+    @blog_comments = BlogComment.new
+    @blog_comments.user_id = current_user.id
+    if @blog_comments.save
       flash[:success] = "コメントを投稿しました"
     else
       redirect_to request.referer
-      # ???@book_comments = BookComment.where(id: @book)
     end
   end
 
@@ -31,6 +28,7 @@ class BlogCommentsController < ApplicationController
       redirect_to users_path(@user.id)
     else
       render :edit
+    end
   end
 
   def destroy
@@ -39,13 +37,14 @@ class BlogCommentsController < ApplicationController
     @comment.destroy
     flash[:success] = "投稿を削除しました"
     redirect_to users_path(@user.id)
-  end
     if @blog_comment.user != current_user
       redirect_to request.referer
     end
+  end
 
   private
   def blog_comment_params
-    params.require(:blog_comment).permit(:body)
+    params.require(:blog_comment).permit(:comment)
   end
 end
+

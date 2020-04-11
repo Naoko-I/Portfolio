@@ -33,8 +33,8 @@ class BlogsController < ApplicationController
     @blog = Blog.find(params[:id])
     @blogs = Blog.all
     @blog_comments = @blog.blog_comments
-    @blog_comments = @blog_comments.order(created_at: :desc)
-    # @blog.user = User.find(params[:id])
+    @blog_comments_order = @blog_comments.order(created_at: :desc)
+    @blog_comment = BlogComment.new
   end
 
   def edit
@@ -69,3 +69,5 @@ class BlogsController < ApplicationController
     params.require(:blog_comment).permit(:body)
   end
 end
+
+
