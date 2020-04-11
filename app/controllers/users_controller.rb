@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @blogs = @user.blogs
+    @blogs = @blogs.order(created_at: :desc)
   end
 
   def edit
