@@ -1,10 +1,10 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.13.0"
 
-set :application, "PF"
+set :application, "Bonheur Chocolat"
 set :repo_url, "https://github.com/Naoko-I/PF.git"
 
-set :deploy_to, "/home/ec2-user/""PF"
+set :deploy_to, "/home/ec2-user/Bonheur Chocolat"
 set :rbenv_ruby, '2.5.7'
 set :linked_files, %w{config/master.key .env}
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
