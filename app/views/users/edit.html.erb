@@ -32,31 +32,12 @@
 										<p>⚠︎メールアドレスはプロフィールには公開されません</p>
 								</td>
 							</tr>
-							<tr height="120">
-								<th>パスワード変更<br />
-										<p>(6文字以上)</p>
-								</th>
-								<td><li>現在のパスワード
-	  									<label class="control-label sr-only" for="inputEmail"></label>
-	    									<%= f.password_field :current_password, autocomplete: "current-password" %>
-	    							</li>
-	    							<li>新しいパスワード
-											<label class="control-label sr-only" for="inputEmail"></label>
-	  										<%= f.password_field :password, autofocus: true, autocomplete: "new-password" %><br />
-	    										<% if @minimum_password_length %><br />
-	      										<em><%= @minimum_password_length %>文字以上</em>
-	    										<% end %>
-	    							</li>
-										<li>確認用
-											<label class="control-label sr-only" for="inputEmail"></label>
-												<%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-												<p>⚠︎パスワードはプロフィールには公開されません</p>
-										</li>
-								</td>
-							</tr>
 							<tr height="60">
 								<th>プロフィール写真</th>
-								<td><%= f.attachment_field :profile_image %></td>
+								<td><%= f.attachment_field :profile_image, id: :profile_image %></td>
+								<!-- プレビューのため追加 -->
+							</tr>
+							<tr>
 							</tr>
 						</table>
 							<%= f.submit "送信する", class: "btn btn-primary submit", "data-confirm" => "この内容で変更しますか?" %>
