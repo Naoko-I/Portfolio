@@ -51,10 +51,10 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   #デプロイ用　Capistrano
-  gem 'capistrano'
-  gem 'capistrano-rails'
-  gem 'capistrano3-puma'
-  gem 'capistrano-rbenv'
+  #gem 'capistrano'
+  #gem 'capistrano-rails'
+  #gem 'capistrano3-puma'
+  #gem 'capistrano-rbenv'
 end
 
 group :test do

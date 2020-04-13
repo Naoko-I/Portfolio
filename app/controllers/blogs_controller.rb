@@ -8,19 +8,18 @@ class BlogsController < ApplicationController
 
   def index
     @blogs = Blog.all
-    @blogs = @blogs.order(created_at: :desc)
     @followers = current_user.following_user
     @followeds = current_user.follower_user
-    @followers = @followers.order(created_at: :desc)
-    @followeds = @followeds.order(created_at: :desc)
-    @blog_comments = BlogComment.new
+    blogs_order = @blogs.order(created_at: :desc)
+    followers = @followers.order(created_at: :desc)
+    followeds = @followeds.order(created_at: :desc)
   end
 
   def create
-    @blog = Blog.new(blog_params)
+    # @blog = Blog.new
     @blog.user_id = current_user.id
     if
-      @blog.save
+      @blog.save(blog_params)
       flash[:success] = "投稿が完了しました"
       redirect_to blogs_path
     else
@@ -31,10 +30,9 @@ class BlogsController < ApplicationController
   def show
     # @user = User.find(params[:user_id])
     @blog = Blog.find(params[:id])
-    @blogs = Blog.all
+    @blog_comment = BlogComment.new
     @blog_comments = @blog.blog_comments
     @blog_comments_order = @blog_comments.order(created_at: :desc)
-    @blog_comment = BlogComment.new
   end
 
   def edit
@@ -53,7 +51,7 @@ class BlogsController < ApplicationController
   end
 
   def destroy
-    @blog = Blog.find(params[:user_id])
+    @blog = Blog.find(params[:id])
     @blog.destroy
     flash[:success] = "投稿を削除しました"
     redirect_to blogs_path

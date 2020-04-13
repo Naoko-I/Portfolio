@@ -1,14 +1,14 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.13.0"
+###lock "~> 3.13.0"
 
-set :application, "Bonheur Chocolat"
-set :repo_url, "https://github.com/Naoko-I/PF.git"
+### set :application, "PF"
+### set :repo_url, "https://github.com/Naoko-I/PF.git"
 
-set :deploy_to, "/home/ec2-user/Bonheur Chocolat"
-set :rbenv_ruby, '2.5.7'
-set :linked_files, %w{config/master.key .env}
-append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
-server '54.178.155.88', user: 'ec2-user', roles: %w{app web db}
+###set :deploy_to, "/home/ec2-user/PF"
+###set :rbenv_ruby, '2.5.7'
+###set :linked_files, %w{config/master.key .env}
+###append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
+###server '54.178.155.88', user: 'ec2-user', roles: %w{app web db}
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp

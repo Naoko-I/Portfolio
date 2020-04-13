@@ -39,15 +39,7 @@
         <% end %>
 
         <span><%= link_to "#{blog.blog_comments.count}コメント", blog_path(blog.id), class: "fa fa-comment" %></span>
-        <span class="fa fa-edit">コメントする</span>
-      </div>
-      <div class="comments">
-        <%#= form_for [@blog, @blog.blog_comments] do |f| %>
-          <!-- <div class="col-sm-12"> -->
-            <%#= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
-          <!-- </div> -->
-          <%#= f.submit "投稿する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
-        <%# end %>
+        <!-- <span class="fa fa-edit">コメントする</span> -->
       </div>
     </div>
   </article>
