@@ -198,7 +198,7 @@ header {
 /* user.index */
 article {
   margin: 20px 0; /* 最後flashメッセージと間隔調整　*/
-  padding: 20px 20px;
+  padding: 15px 20px;
   height: 650px;
   width: 550px;
   background-color: #fff;
@@ -248,7 +248,7 @@ article {
 
 .blog-box, .user-list-box {
   margin: 20px 20px 20px 0;
-  padding: 10px 20px;
+  padding: 0 20px;
   min-height: 300px;/* user-list-box用に設定*/
   overflow: hidden;
   background-color: #fff;
@@ -372,7 +372,8 @@ article {
   }
 }
 
-/* favorites.index,user.show一部共通 */
+/* favorites.index,user.
+一部共通 */
 #blog-page {
   width: 100%;
 }
@@ -410,23 +411,46 @@ article {
 }
 
 /* blog.show */
-.comment-box {
-  margin-top: 20px;
-  width: 570px; /* col-1.6で内maxサイズ　*/
-  min-height: 500px;
-  background-color: #fff;
-  border: 1px solid #cccccc;
+.comment-page {
+  width: 85%;
+  margin-top: 15px;
 }
 
-#comment-page {
-  width: 85%;
-  margin-top: 30px;
+#edit-box {
+  height: 700px;
+  .edit {
+    height: 28px;
+    font-size: 12px;
+    margin-left: 200px;
+    }
+  .blog-main {
+    i, a {
+      font-weight: bold;
+      padding-top: 8px;
+    }
+  }
 }
 
 .icon-list {
   display: inline-block;
   float: left;
   a, i {
-    margin-right: 5px;
+    margin-right: 10px;
   }
 }
+
+.comment-box {
+  margin-top: 20px;
+  width: 570px; /* col-1.6で内maxサイズ　*/
+  min-height: 500px;
+  background-color: #fff;
+  border: 1px solid #cccccc;
+  overflow-y: scroll; /* テーブル部分だけにかける　*/
+  .box-title {
+    text-align: center;
+    font-weight: bold;
+  }
+}
+
+
+

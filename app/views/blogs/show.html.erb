@@ -1,11 +1,11 @@
 <%= render 'users/header' %>
 
-<div class="container" id="comment-page">
+<div class="container comment-page">
 	<%= flash[:success] %>
 
 	<div class="row">
 		<div class="col-md-5">
-			<article class="new-arriving-box">
+			<article class="new-arriving-box" id="edit-box">
 				<table class="article-header">
 		      <tr>
 		        <td>
@@ -19,8 +19,28 @@
 		    </table>
 
 		    <div class="blog-main">
-		        <%= attachment_image_tag @blog, :image, size:'500x420' %>
-		      	<p class="blog-text"><%= @blog.body %></p>
+			    <%= attachment_image_tag @blog, :image, size:'500x400' %>
+			      <!-- current_userの場合、ブログ編集欄 -->
+			    <ul>
+			      <li class="icon-list">
+				    	<% if current_user == @blog.user %>
+								<i class="fa fa-edit"> 編集</i>
+								<%= link_to "削除", blog_path(@blog), method: :delete, class: "glyphicon glyphicon-trash", data: {confirm: "削除しますか？" } %>
+					    		<%= form_for(@blog) do |f| %>
+					    		<!-- ブログ写真編集欄 -->
+					    			<label for="blog-image"></label>
+					    			<%= f.label :写真を選択, class: "glyphicon glyphicon-camera" %>
+										<%= f.attachment_field :image %>
+										<!-- ブログ本文編集欄 -->
+					    			<label for="body"></label>
+										<%= f.text_area :body, size: "65x4" %>
+				      				<%= f.submit "更新する", class: "btn btn-primary edit", method: :post, data: {confirm: "この内容で更新しますか？" } %>
+									<% end %>
+							<% else %>
+			      		<%= @blog.body %>
+							<% end %>
+						</li>
+					</ul>
 		    </div>
 
 		    <div class="article-footer">
@@ -37,15 +57,13 @@
 			            <% end %>
 			          <% end %>
 			        <% end %>
-			     		</li>
-			     		<li>
-			        	<% if current_user == @blog.user %>
-			          	<i class="fa fa-heart"><%= @blog.favorites.count %>いいね</i>
-									<i class="fa fa-comment"><%= @blog.blog_comments.count %>コメント</i>
-									<%= link_to "編集",  edit_blog_path(@blog), class: "fa fa-edit" %>
-									<%= link_to "削除", blog_path(@blog), method: :delete, class: "glyphicon glyphicon-trash", data: {confirm: "削除しますか？" } %>
-			        	<% end %>
-			        </li>
+			     	</li>
+		     		<li>
+		        	<% if current_user == @blog.user %>
+		          	<i class="fa fa-heart"><%= @blog.favorites.count %>いいね</i>
+								<i class="fa fa-comment"><%= @blog.blog_comments.count %>コメント</i>
+		        	<% end %>
+		        </li>
 		       </ul>
 				</div>
 			</article>
@@ -53,42 +71,45 @@
 
 		<div class="col-md-offset-1 col-md-6 comment-box">
       <div class="comments-form">
-	      <%#= form_for [@blog_comments, url: blog_blog_comments_path] do |f| %>
-	        <%#= f.text_area :comments, class: "form-control", placeholder: "コメントをここに" %>
-	        <%#= f.submit "投稿する", class: "btn btn-lg btn-base-1" %>
-	      <%# end %>
+	      <%= form_for [@blog, @blog_comment] do |f| %>
+	        <%= f.text_area :comments, class: "form-control", placeholder: "コメントをここに" %>
+	        <%= f.submit "投稿する", class: "btn btn-lg btn-base-1" %>
+	      <% end %>
 	    </div>
-				<div class="comment-index">
-					<table class="post-comments">
-						<tr>
-							<td><span class="glyphicon glyphicon-arrow-left"></span></td>
-							<td class="name"><%= @blog.user.name %></td>
-						</tr>
-						<tr>
-							<td>コメント一覧</td>
-						</tr>
-							<% @blog_comments.each do |blog_comment| %>
-								<tr>
-									<td>
-										<%= link_to user_path(blog_comment.user) do %>
-				            	<%= attachment_image_tag blog_comment.user, :profile_image, size:'40x40', format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
-				            <% end %>
-				          </td>
-				          <td><%= link_to "#{blog_comment.user.name}", user_path(blog_comment.user) %></td>
-				          <td><%= blog_comment.body %></td>
-				          <td>
-				          	<% if @blog.user == current.user %>
-				          		<%= link_to edit_blog_blog_comment_path(blog_comment), class: "fa fa-edit" %>
-				          		<span>
-				          			<%= link_to blog_blog_comment_path(blog_comment), class: "fa fa-trash-alt", data: { confirm: "削除しますか？" } %>
-				          		</span>
-				          	<% end %>
-				          </td>
-				        </tr>
-		        	<% end %>
+				<ul class="comment-index">
+					<li>
+						<span class="glyphicon glyphicon-arrow-left"></span>
+						<span class="name"><%= @blog.user.name %></span>
+					</li>
+						<table class="post-comments">
+							<!-- テーブル -->
+							<tr class="box-title">
+								<td calspan="2">コメント一覧</td>
+							</tr>
+								<% @blog_comments.each do |blog_comment| %>
+									<tr>
+										<td>
+											<%# if @blog_comments.blank? %>
+												<!-- <p>コメントはありません</p> -->
+											<%# else %>
+												<%= link_to user_path(blog_comment.user) do %>
+						            	<%= attachment_image_tag blog_comment.user, :profile_image, size:'40x40', format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
+					            	<% end %>
+						          </td>
+						          <td><%= link_to "#{blog_comment.user.name}", user_path(blog_comment.user) %></td>
+						          <td><%= blog_comment.body %></td>
+						          <td>
+						          	<% if @blog.user == current.user %>
+						          		<%= link_to edit_blog_blog_comment_path(blog_comment), class: "fa fa-edit" %>
+						          		<span>
+						          			<%= link_to blog_blog_comment_path(blog_comment), class: "fa fa-trash-alt", data: { confirm: "削除しますか？" } %>
+						          		</span>
+						          	<% end %>
+						          </td>
+					          <% end %>
+					        </tr>
+		        		<%# end %>
 		    		</table>
 					</div>
 		</div>
 </div>
-
-<!-- 投稿されたコメントが0件だった場合の条件分岐　<%# if @blog_comments.blank? %><%# end %> -->
