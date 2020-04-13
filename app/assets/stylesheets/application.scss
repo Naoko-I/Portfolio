@@ -418,11 +418,6 @@ article {
 
 #edit-box {
   height: 700px;
-  .edit {
-    height: 28px;
-    font-size: 12px;
-    margin-left: 200px;
-    }
   .blog-main {
     i, a {
       font-weight: bold;
@@ -441,16 +436,35 @@ article {
 
 .comment-box {
   margin-top: 20px;
+  padding-top: 20px;
   width: 570px; /* col-1.6で内maxサイズ　*/
-  min-height: 500px;
+  min-height: 600px;
   background-color: #fff;
   border: 1px solid #cccccc;
+  overflow-y: hidden;
   overflow-y: scroll; /* テーブル部分だけにかける　*/
   .box-title {
-    text-align: center;
+    padding-bottom: 5px;
+    text-align: left;
     font-weight: bold;
   }
 }
 
+.update {
+  height: 28px;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.comments-index {
+  margin-top: 10px;
+  padding-top: 10px;
+  /*text-align: center;*/
+  border-top: 1px solid #cccccc;
+  .box-title {
+    text-align: center;
+    font-size: 15px;
+  }
+}
 
 

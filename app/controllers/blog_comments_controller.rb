@@ -7,9 +7,10 @@ class BlogCommentsController < ApplicationController
 
   def create
     @blog = Blog.find(params[:blog_id])
-    @blog_comment = BlogComment.new
-    @blog_comment.user_id = current_user.id
-    if @blog_comment.save
+    @blog_comment = @blog.blog_comments.new(blog_comment_params)
+    # user = User.find(params[:user_id])
+    # @blog_comments.user_id = current_user.id
+    if @blog_comments.save(blog_comment_params)
       flash[:success] = "コメントを投稿しました"
     else
       redirect_to request.referer
@@ -21,13 +22,15 @@ class BlogCommentsController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
+    # @user = User.find(params[:user_id])
+    blog = Blog.find(params[:blog_id])
+    @comment = @Blog_comment.blog
     if
-      @user.update(blog_comment_params)
+      @comment.update(blog_comment_params)
       flash[:success] = "コメントを更新しました"
-      redirect_to users_path(@user.id)
+      redirect_to request.referer
     else
-      render :edit
+      render :show
     end
   end
 
