@@ -4,7 +4,6 @@ class FavoritesController < ApplicationController
     # blog_idのみを引っ張ってくるためselectメソッドを使用
     favoriteList = Favorite.where(user_id: current_user.id).select([:blog_id])
     @blogs = Blog.where(id: favoriteList)
-
   end
 
   def create

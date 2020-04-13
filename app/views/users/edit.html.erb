@@ -34,7 +34,10 @@
 							</tr>
 							<tr height="60">
 								<th>プロフィール写真</th>
-								<td><%= f.attachment_field :profile_image %></td>
+								<td><%= f.attachment_field :profile_image, id: :profile_image %></td>
+								<!-- プレビューのため追加 -->
+							</tr>
+							<tr>
 							</tr>
 						</table>
 							<%= f.submit "送信する", class: "btn btn-primary submit", "data-confirm" => "この内容で変更しますか?" %>
