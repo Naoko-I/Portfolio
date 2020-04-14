@@ -7,33 +7,33 @@
 
   <div class="navber navbar-center">
     <div class="search">
-      <form class="form-inline my-2 my-lg-0">
-         <input class="form-control mr-sm-3" type="text" placeholder="Search" aria-label="Search">
-         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
+      <!-- <form class="form-inline my-2 my-lg-0"> -->
+         <!-- <input class="form-control mr-sm-3" type="text" placeholder="Search" aria-label="Search"> -->
+         <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+      <!-- </form> -->
     </div>
   </div>
 
-  <% if user_signed_in? %>
-    <ul class="nav navbar-nav navbar-right">
-      <li>
-        <%= link_to "", blogs_path, class: "glyphicon glyphicon-home" %>
-      </li>
-      <li>
-        <%= link_to "", new_blog_path, class: "fa fa-paper-plane" %>
-      </li>
-      <li>
-        <%= link_to "", blog_favorites_index_path(current_user), class: "glyphicon glyphicon-heart-empty" %>
-      </li>
-      <li>
-        <%= link_to "", destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out" %>
-      </li>
-    </ul>
-    <div class="nav navbar-right image">
-      <%= link_to user_path(current_user) do %>
-      <%= attachment_image_tag current_user, :profile_image, size:'50x50', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
-      <% end %>
-    </div>
-  <% end %>
+    <% if user_signed_in? %>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <%= link_to "", blogs_path, class: "glyphicon glyphicon-home" %>
+        </li>
+        <li>
+          <%= link_to "", new_blog_path, class: "fa fa-paper-plane" %>
+        </li>
+        <li>
+          <%= link_to "", blog_favorites_index_path(current_user), class: "glyphicon glyphicon-heart-empty" %>
+        </li>
+        <li>
+          <%= link_to "", destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out" %>
+        </li>
+      </ul>
+      <div class="nav navbar-right image">
+        <%= link_to user_path(current_user) do %>
+        <%= attachment_image_tag current_user, :profile_image, size:'50x50', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
+        <% end %>
+      </div>
+    <% end %>
 </header>
 
