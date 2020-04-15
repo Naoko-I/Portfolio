@@ -6,6 +6,17 @@
 			<div class="common-user-box">
 				<div class="edit-form">
 				  <%= form_for(@user) do |f| %>
+				  	<% if @user.errors.any? %>
+							<div class="error_explanation">
+								<h4>入力エラー項目が<%= @user.errors.count %>件あります。</h4>
+								  <ul>
+								  	<% @user.errors.full_messages.each do |message| %>
+								    	<li><%= message %></li>
+								  	<% end %>
+								  </ul>
+								</div>
+						<% end %>
+
 						<table>
 							<tr height="100">
 								<th class="image"><%= attachment_image_tag @user, :profile_image, size:'70x70', format: 'jpeg', fallback: 'no_image.jpg', class: " img-circle pull-left profile-thumb" %></th>

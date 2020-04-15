@@ -41,9 +41,9 @@ class BlogsController < ApplicationController
     if
       @blog.update(blog_params)
       flash[:success] = "投稿内容を更新しました"
-      redirect_to blogs_path
+      redirect_to blogs_path(@blog)
     else
-      render :edit
+      redirect_to request.referer
     end
   end
 

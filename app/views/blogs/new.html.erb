@@ -4,8 +4,10 @@
 	<div class="row">
 		<div class="col-md-offset-3 col-md-6 col-md-offset-3 ">
 			<%= form_for(@blog) do |f| %>
+
 				<div class="common-user-box">
 					<div class="caption-title">新規投稿</div>
+						<%= render 'blogs/error_messages' %>
 						<div class="field">
 							<%= f.label :写真を選択, class: "glyphicon glyphicon-camera" %>
 							<%= f.attachment_field :image, size:'200x250', format: 'jpeg' %>

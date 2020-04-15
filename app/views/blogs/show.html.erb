@@ -27,6 +27,7 @@
 								<i class="fa fa-edit"> 編集</i>
 								<%= link_to "削除", blog_path(@blog), method: :delete, class: "glyphicon glyphicon-trash", data: {confirm: "削除しますか？" } %>
 					    		<%= form_for(@blog) do |f| %>
+					    			<%= render 'blogs/error_messages' %>
 					    		<!-- ブログ写真編集欄 -->
 					    			<label for="blog-image"></label>
 					    			<%= f.label :写真を選択, class: "glyphicon glyphicon-camera" %>
