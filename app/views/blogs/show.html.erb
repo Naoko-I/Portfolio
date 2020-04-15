@@ -75,7 +75,7 @@
 			</div>
       <div class="comments-form">
 	      <%= form_for [@blog, @blog_comment] do |f| %>
-	        <%= f.text_area :comment, class: "form-control", placeholder: "コメントをここに入力" %>
+	        <%= f.text_area :comments, class: "form-control", placeholder: "コメントをここに入力" %>
 	        <%= f.submit "投稿する", class: "btn btn-primary update" %>
 	      <% end %>
 	    </div>
