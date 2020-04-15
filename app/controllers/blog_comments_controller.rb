@@ -10,8 +10,9 @@ class BlogCommentsController < ApplicationController
     @blog_comment = @blog.blog_comments.new(blog_comment_params)
     # user = User.find(params[:user_id])
     @blog_comment.user_id = current_user.id
-    if @blog_comments.save
+    if @blog_comment.save
       flash[:success] = "コメントを投稿しました"
+      redirect_to request.referer
      else
        redirect_to request.referer
     end

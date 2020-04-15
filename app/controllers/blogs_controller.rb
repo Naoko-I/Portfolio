@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:index, :create, :show, :edit, :update, :destroy]
 
   def new
     @user = current_user
@@ -15,8 +15,7 @@ class BlogsController < ApplicationController
   def create
     @blog = Blog.new(blog_params)
     @blog.user_id = current_user.id
-    if
-      @blog.save
+    if @blog.save
       flash[:success] = "投稿が完了しました"
       redirect_to blogs_path
     else
@@ -27,8 +26,7 @@ class BlogsController < ApplicationController
   def show
     @blog = Blog.find(params[:id])
     @blog_comment = BlogComment.new
-    # (blog_comment_params)
-    @blog_comments = @blog.blog_comments
+    @blog_comments = @blog.blog_comments.order(created_at: :desc)
     # @blog_comments_order = @blog_comments.order(created_at: :desc)
   end
 
@@ -38,12 +36,13 @@ class BlogsController < ApplicationController
 
   def update
     @blog = Blog.find(params[:id])
-    if
-      @blog.update(blog_params)
+    if @blog.update(blog_params)
       flash[:success] = "投稿内容を更新しました"
       redirect_to blogs_path(@blog)
     else
-      redirect_to request.referer
+      @blog_comment = BlogComment.new
+      @blog_comments = @blog.blog_comments.order(created_at: :desc)
+      render :show
     end
   end
 
@@ -58,10 +57,6 @@ class BlogsController < ApplicationController
   def blog_params
     params.require(:blog).permit(:body, :image)
   end
-
-  # def blog_comment_params
-    # params.require(:blog_comment).permit(:comment)
-  # end
 end
 
 

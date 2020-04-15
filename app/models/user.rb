@@ -9,10 +9,7 @@ class User < ApplicationRecord
   has_many :blog_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
-  validates :name, presence: true, length: { minimum: 2, maximum: 20}
-
-  #???sign upでintroductionのバリデーションがかかるのでコメントアウト
-  # validates :introduction, length: {minimum: 2, maximum: 200}
+  validates :name, presence: true, length: { minimum: 5, maximum: 20}
 
   #user.index フォローフォロワー一覧表示のために追記
   has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy # フォロー取得
@@ -20,7 +17,7 @@ class User < ApplicationRecord
   has_many :following_user, through: :follower, source: :followed # 自分がフォローしている人
   has_many :follower_user, through: :followed, source: :follower # 自分をフォローしている人
 
-  # ユーザーをフォローする
+# ユーザーをフォローする
 def follow(user_id)
   follower.create(followed_id: user_id)
 end

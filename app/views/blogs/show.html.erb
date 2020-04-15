@@ -25,7 +25,7 @@
 			      <li class="icon-list">
 				    	<% if current_user == @blog.user %>
 								<i class="fa fa-edit"> 編集</i>
-								<%= link_to "削除", blog_path(@blog), method: :delete, class: "glyphicon glyphicon-trash", data: {confirm: "削除しますか？" } %>
+								<%= link_to "削除", blog_path(@blog), method: :delete, class: "glyphicon glyphicon-trash", data: { confirm: "この投稿を削除しますか？" } %>
 					    		<%= form_for(@blog) do |f| %>
 					    			<%= render 'blogs/error_messages' %>
 					    		<!-- ブログ写真編集欄 -->
@@ -35,7 +35,7 @@
 									<!-- ブログ本文編集欄 -->
 					    			<label for="body"></label>
 										<%= f.text_area :body, size: "65x4" %>
-				      				<%= f.submit "更新する", class: "btn btn-primary update", method: :post, data: {confirm: "この内容で更新しますか？" } %>
+				      			<%= f.submit "更新する", class: "btn btn-primary update", method: :post, data: { confirm: "この内容で更新しますか？" } %>
 									<% end %>
 							<% else %>
 			      		<%= @blog.body %>
@@ -95,10 +95,10 @@
 				            	<% end %>
 					          </td>
 					          <td><%= link_to "#{blog_comment.user.name}", user_path(blog_comment.user) %></td>
-					          <td><%= blog_comment.body %></td>
+					          <td><%= blog_comment.comments %></td>
 					          <td>
-					          	<% if blog_comment.user == current.user %>
-					          		<%= link_to blog_blog_comment_path(blog_comment), class: "fa fa-trash-alt", data: { confirm: "削除しますか？" } %>
+					          	<% if blog_comment.user == current_user %>
+					          		<%= link_to "", blog_blog_comments_path(blog_comment), class: "glyphicon glyphicon-trash", method: :delete, data: { confirm: "削除しますか？" } %>
 					          	<% end %>
 					          </td>
 				          <%# end %>
