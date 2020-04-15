@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   resources :blogs do
     resource :favorites, only: [:index, :create, :destroy]
       get 'favorites/index' => 'favorites#index'
-    resource :blog_comments, only: [:new, :create, :edit, :update, :destroy]
+    resource :blog_comments, only: [:new, :create, :destroy]
+      post 'blog_comments/create' => 'blogs#show'
   end
 
   devise_for :users

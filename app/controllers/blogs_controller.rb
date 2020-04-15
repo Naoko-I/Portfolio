@@ -7,12 +7,9 @@ class BlogsController < ApplicationController
   end
 
   def index
-    @blogs = Blog.all
-    @followers = current_user.following_user
-    @followeds = current_user.follower_user
-    blogs_order = @blogs.order(created_at: :desc)
-    followers = @followers.order(created_at: :desc)
-    followeds = @followeds.order(created_at: :desc)
+    @blogs = Blog.all.order(created_at: :desc)
+    @followers = current_user.following_user.order(created_at: :desc)
+    @followeds = current_user.follower_user.order(created_at: :desc)
   end
 
   def create
@@ -30,8 +27,9 @@ class BlogsController < ApplicationController
   def show
     @blog = Blog.find(params[:id])
     @blog_comment = BlogComment.new
+    # (blog_comment_params)
     @blog_comments = @blog.blog_comments
-    @blog_comments_order = @blog_comments.order(created_at: :desc)
+    # @blog_comments_order = @blog_comments.order(created_at: :desc)
   end
 
   def edit
@@ -56,15 +54,14 @@ class BlogsController < ApplicationController
     redirect_to blogs_path
   end
 
-
   private
   def blog_params
     params.require(:blog).permit(:body, :image)
   end
 
-  def blog_comment_params
-    params.require(:blog_comment).permit(:body)
-  end
+  # def blog_comment_params
+    # params.require(:blog_comment).permit(:comment)
+  # end
 end
 
 

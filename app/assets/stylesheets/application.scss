@@ -261,7 +261,7 @@ article {
     width: 70px;
   }
   .name {
-    font-size: 18px;
+    font-size: 20px;
   }
 }
 
@@ -316,7 +316,6 @@ article {
   }
   li {
     margin-bottom: 5px;
-    /*list-style: none;*/
   }
   .image {
     padding-left: 25px;
@@ -343,11 +342,6 @@ article {
   text-align: center;
 }
 
-/* blog.index */
-/*.col-md-offset-1.col-md-4 { サイドバー固定。view崩れる*/
-  /*position: fixed;*/
-/*}*/
-
 /* follow,follower.index */
 .common-relationship-box { /* common-user-boxと共通にできれば1つにまとめる */
   margin-top: 20px;
@@ -372,8 +366,7 @@ article {
   }
 }
 
-/* favorites.index,user.
-一部共通 */
+/* favorites.index,user.一部共通 */
 #blog-page {
   width: 100%;
 }
@@ -388,7 +381,6 @@ article {
 }
 
 .slide-wrap {
-   /*margin: 20px;*/
    zoom: 85%;
    display: -webkit-box;
    display: -ms-flexbox;
