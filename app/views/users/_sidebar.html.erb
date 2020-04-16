@@ -29,7 +29,6 @@
               <% end %>
             </td>
             <td class="name"><%= follower.name %></td>
-            <!-- エラー出るためlink外してる...<td class="name"><%#= link_to "#{follower.name}", user_path(follower) %> -->
           </tr>
         <% end %>
       </table>
@@ -49,7 +48,6 @@
               <% end %>
             </td>
             <td class="name"><%= followed.name %></td>
-            <!-- ℓ32と同様エラー。nameにリンクつかないため外してる。<td class="name"><%#= link_to "#{followed.name}", user_path(followed) %></td> -->
           </tr>
         <% end %>
       </table>

@@ -71,15 +71,17 @@
 		</div>
 
 		<div class="col-md-offset-1 col-md-6 comment-box">
-			<div class="box-title">
-				<i class="glyphicon glyphicon-arrow-left">コメント投稿</i>
-			</div>
-      <div class="comments-form">
-	      <%= form_for [@blog, @blog_comment] do |f| %>
-	        <%= f.text_area :comments, class: "form-control", placeholder: "コメントをここに入力" %>
-	        <%= f.submit "投稿する", class: "btn btn-primary update" %>
-	      <% end %>
-	    </div>
+			<% if current_user != @blog.user %>
+				<div class="box-title">
+					<i class="glyphicon glyphicon-arrow-left">コメント投稿</i>
+				</div>
+			    <div class="comments-form">
+			      <%= form_for [@blog, @blog_comment] do |f| %>
+			        <%= f.text_area :comments, class: "form-control", placeholder: "コメントをここに入力" %>
+			        <%= f.submit "投稿する", class: "btn btn-primary update" %>
+			      <% end %>
+			    </div>
+		  <% end %>
 
 	    <div class="comments-index">
 				<div class="box-title">コメント一覧</div>
@@ -87,21 +89,17 @@
 							<% @blog_comments.each do |blog_comment| %>
 								<tr>
 									<td>
-										<%# if @blog_comments.blank? %>
-											<!-- <p>コメントはありません</p> -->
-										<%# else %>
-											<%= link_to user_path(blog_comment.user) do %>
-					            	<%= attachment_image_tag blog_comment.user, :profile_image, size:'40x40', format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
-				            	<% end %>
-					          </td>
-					          <td><%= link_to "#{blog_comment.user.name}", user_path(blog_comment.user) %></td>
-					          <td><%= blog_comment.comments %></td>
-					          <td>
-					          	<% if blog_comment.user == current_user %>
-					          		<%= link_to "", blog_blog_comments_path(blog_comment), class: "glyphicon glyphicon-trash", method: :delete, data: { confirm: "削除しますか？" } %>
-					          	<% end %>
-					          </td>
-				          <%# end %>
+										<%= link_to user_path(blog_comment.user) do %>
+			            		<%= attachment_image_tag blog_comment.user, :profile_image, size:'40x40', format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
+		            		<% end %>
+					        </td>
+					        <td><%= link_to "#{blog_comment.user.name}", user_path(blog_comment.user) %></td>
+					        <td width="450"><h6><%= blog_comment.comments %></h6></td>
+					        <td>
+				          	<% if blog_comment.user == current_user %>
+				          		<%= link_to "", blog_blog_comments_path(blog_comment), class: "glyphicon glyphicon-trash", method: :delete, data: { confirm: "削除しますか？" } %>
+				          	<% end %>
+					        </td>
 				        </tr>
 		      		<% end %>
 		  		</table>

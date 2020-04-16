@@ -405,6 +405,7 @@ article {
       margin: 20px 0  0 50px;
     }
 }
+
 /* blog.show */
 .comment-page {
   width: 85%;
@@ -454,10 +455,15 @@ article {
 .comments-index {
   margin-top: 10px;
   padding-top: 10px;
-  border-top: 1px solid #cccccc;
   .box-title {
+    margin-bottom: 10px;
     text-align: center;
-    font-size: 15px;
+    font-size: 18px;
+    border-bottom: 1px solid #cccccc;
+  }
+  td {
+    font-size: 18px;
+    padding-right: 10px;
   }
 }
 
