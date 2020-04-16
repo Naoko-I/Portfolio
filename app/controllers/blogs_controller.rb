@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:index, :create, :show, :edit, :update, :destroy]
 
   def new
     @user = current_user
@@ -7,19 +7,15 @@ class BlogsController < ApplicationController
   end
 
   def index
-    @blogs = Blog.all
-    @followers = current_user.following_user
-    @followeds = current_user.follower_user
-    blogs_order = @blogs.order(created_at: :desc)
-    followers = @followers.order(created_at: :desc)
-    followeds = @followeds.order(created_at: :desc)
+    @blogs = Blog.all.order(created_at: :desc)
+    @followers = current_user.following_user.order(created_at: :desc)
+    @followeds = current_user.follower_user.order(created_at: :desc)
   end
 
   def create
-    # @blog = Blog.new
+    @blog = Blog.new(blog_params)
     @blog.user_id = current_user.id
-    if
-      @blog.save(blog_params)
+    if @blog.save
       flash[:success] = "投稿が完了しました"
       redirect_to blogs_path
     else
@@ -30,8 +26,8 @@ class BlogsController < ApplicationController
   def show
     @blog = Blog.find(params[:id])
     @blog_comment = BlogComment.new
-    @blog_comments = @blog.blog_comments
-    @blog_comments_order = @blog_comments.order(created_at: :desc)
+    @blog_comments = @blog.blog_comments.order(created_at: :desc)
+    # @blog_comments_order = @blog_comments.order(created_at: :desc)
   end
 
   def edit
@@ -40,12 +36,13 @@ class BlogsController < ApplicationController
 
   def update
     @blog = Blog.find(params[:id])
-    if
-      @blog.update(blog_params)
+    if @blog.update(blog_params)
       flash[:success] = "投稿内容を更新しました"
-      redirect_to blogs_path
+      redirect_to blogs_path(@blog)
     else
-      render :edit
+      @blog_comment = BlogComment.new
+      @blog_comments = @blog.blog_comments.order(created_at: :desc)
+      render :show
     end
   end
 
@@ -56,14 +53,9 @@ class BlogsController < ApplicationController
     redirect_to blogs_path
   end
 
-
   private
   def blog_params
     params.require(:blog).permit(:body, :image)
-  end
-
-  def blog_comment_params
-    params.require(:blog_comment).permit(:body)
   end
 end
 

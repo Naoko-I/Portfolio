@@ -7,6 +7,6 @@ class Blog < ApplicationRecord
 	  end
 
 	attachment :image
-	validates :body, presence: true, length: { minimum: 2,maximum: 200}
+	validates :body, presence: true, length: { minimum: 5,maximum: 200}
 	validates :image, presence: true
 end

@@ -20,21 +20,22 @@
 
 		    <div class="blog-main">
 			    <%= attachment_image_tag @blog, :image, size:'500x400' %>
-			      <!-- current_userの場合、ブログ編集欄 -->
+			  <!-- current_userの場合、ブログ編集欄 -->
 			    <ul>
 			      <li class="icon-list">
 				    	<% if current_user == @blog.user %>
 								<i class="fa fa-edit"> 編集</i>
-								<%= link_to "削除", blog_path(@blog), method: :delete, class: "glyphicon glyphicon-trash", data: {confirm: "削除しますか？" } %>
+								<%= link_to "削除", blog_path(@blog), method: :delete, class: "glyphicon glyphicon-trash", data: { confirm: "この投稿を削除しますか？" } %>
 					    		<%= form_for(@blog) do |f| %>
+					    			<%= render 'blogs/error_messages' %>
 					    		<!-- ブログ写真編集欄 -->
 					    			<label for="blog-image"></label>
 					    			<%= f.label :写真を選択, class: "glyphicon glyphicon-camera" %>
 										<%= f.attachment_field :image %>
-										<!-- ブログ本文編集欄 -->
+									<!-- ブログ本文編集欄 -->
 					    			<label for="body"></label>
 										<%= f.text_area :body, size: "65x4" %>
-				      				<%= f.submit "更新する", class: "btn btn-primary update", method: :post, data: {confirm: "この内容で更新しますか？" } %>
+				      			<%= f.submit "更新する", class: "btn btn-primary update", method: :post, data: { confirm: "この内容で更新しますか？" } %>
 									<% end %>
 							<% else %>
 			      		<%= @blog.body %>
@@ -70,15 +71,17 @@
 		</div>
 
 		<div class="col-md-offset-1 col-md-6 comment-box">
-			<div class="box-title">
-				<i class="glyphicon glyphicon-arrow-left">コメント投稿</i>
-			</div>
-      <div class="comments-form">
-	      <%= form_for [@blog, @blog_comment] do |f| %>
-	        <%= f.text_area :comments, class: "form-control", placeholder: "コメントをここに入力" %>
-	        <%= f.submit "投稿する", class: "btn btn-primary update" %>
-	      <% end %>
-	    </div>
+			<% if current_user != @blog.user %>
+				<div class="box-title">
+					<i class="glyphicon glyphicon-arrow-left">コメント投稿</i>
+				</div>
+			    <div class="comments-form">
+			      <%= form_for [@blog, @blog_comment] do |f| %>
+			        <%= f.text_area :comments, class: "form-control", placeholder: "コメントをここに入力" %>
+			        <%= f.submit "投稿する", class: "btn btn-primary update" %>
+			      <% end %>
+			    </div>
+		  <% end %>
 
 	    <div class="comments-index">
 				<div class="box-title">コメント一覧</div>
@@ -86,25 +89,17 @@
 							<% @blog_comments.each do |blog_comment| %>
 								<tr>
 									<td>
-										<%# if @blog_comments.blank? %>
-											<!-- <p>コメントはありません</p> -->
-										<%# else %>
-											<%= link_to user_path(blog_comment.user) do %>
-					            	<%= attachment_image_tag blog_comment.user, :profile_image, size:'40x40', format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
-				            	<% end %>
-					          </td>
-					          <td><%= link_to "#{blog_comment.user.name}", user_path(blog_comment.user) %></td>
-					          <td><%= blog_comment.body %></td>
-					          <td>
-					          	<% if @blog_comment.user == current.user %>
-					          	<!-- コメント編集機能追加実装の場合 -->
-					          		<%#= link_to edit_blog_blog_comment_path(blog_comment), class: "fa fa-edit" %>
-					          		<!-- <span> -->
-					          			<%= link_to blog_blog_comment_path(blog_comment), class: "fa fa-trash-alt", data: { confirm: "削除しますか？" } %>
-					          		<!-- </span> -->
-					          	<% end %>
-					          </td>
-				          <%# end %>
+										<%= link_to user_path(blog_comment.user) do %>
+			            		<%= attachment_image_tag blog_comment.user, :profile_image, size:'40x40', format: 'jpeg', fallback: 'no_image.jpg', class: "img-circle pull-left profile-thumb" %>
+		            		<% end %>
+					        </td>
+					        <td><%= link_to "#{blog_comment.user.name}", user_path(blog_comment.user) %></td>
+					        <td width="450"><h6><%= blog_comment.comments %></h6></td>
+					        <td>
+				          	<% if blog_comment.user == current_user %>
+				          		<%= link_to "", blog_blog_comments_path(blog_comment), class: "glyphicon glyphicon-trash", method: :delete, data: { confirm: "削除しますか？" } %>
+				          	<% end %>
+					        </td>
 				        </tr>
 		      		<% end %>
 		  		</table>
