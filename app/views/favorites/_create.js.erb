@@ -1,3 +1,5 @@
+$('#favorites_buttons_<%= @blog.id %>').html("<%= j(render partial: 'favorites/favorite', locals: {blog: @blog}) %>");
+
 // 未編集
 // $("textarea").val("");
 // $(".blog_<%= @blog.id %>").html("<%= j(render 'blogs/detail', blog: @blog ) %>");

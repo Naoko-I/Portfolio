@@ -1,3 +1,4 @@
+$('#favorites_buttons_<%= @blog.id %>').html("<%= j(render partial: 'favorites/favorite', locals: {blog: @blog}) %>");
 // 未編集
 // if (location.pathname == '/blogs') {
   // $(".blog_<%= @blog.id %>").html("<%= j(render 'users/blog',  blog: @blog ) %>")
