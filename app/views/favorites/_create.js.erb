@@ -1,6 +1,6 @@
-$('#favorites_buttons_<%= @blog.id %>').html("<%= j(render partial: 'favorites/favorite', locals: {blog: @blog}) %>");
-
-// 未編集
-// $("textarea").val("");
-// $(".blog_<%= @blog.id %>").html("<%= j(render 'blogs/detail', blog: @blog ) %>");
-// $(".comment_<%= @blog.id %>").html("<%= j(render 'blogs/comment', blog_comments: @blog.blog_comments ) %>");
+// 編集未
+if (location.pathname == '/blogs') {
+  $(".blog_<%= @blog.id %>").html("<%= j(render 'books/book',  book: @book ) %>")
+} else {
+  $(".blog_<%= @blog.id %>").html("<%= j(render 'books/detail',  book: @book ) %>")
+}

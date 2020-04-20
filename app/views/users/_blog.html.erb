@@ -23,21 +23,19 @@
 
     <div class="article-footer">
       <div class="blog-icon">
-        <div id="favorites_buttons_<%= blog.id %>">
-          <%= render partial: 'favorites/favorite', locals: { blog: blog} %>
-
-            <% if current_user != blog.user %>
-              <% if blog.favorited_by?(current_user) %>
-                <%= link_to blog.favorites.count, blog_favorites_path(blog.id), method: :delete, remote: true do %>
-                  <i class="fa fa-heart" style="color: red;"><%= blog.favorites.count%>いいね</i>
-                <% end %>
-              <% elsif %>
-                <%= link_to blog.favorites.count, blog_favorites_path(blog.id), method: :post, remote: true do %>
-                  <i class="fa fa-heart-o"><%= blog.favorites.count %>いいね</i>
-                <% end %>
-              <% end %>
+        <% if current_user != blog.user %>
+          <% if blog.favorited_by?(current_user) %>
+            <%= link_to blog_favorites_path(blog, redirect_id: 0), method: :delete, remote: true do %>
+              <!-- <i class="fa fa-heart" style="color: red;"><%= blog.favorites.count%>いいね</i> -->
+              <span class="glyphicon glyphicon-heart"><%= blog.favorites.count%>いいね</span>
             <% end %>
-        </div>
+          <% elsif %>
+            <%= link_to blog_favorites_path(blog, redirect_id: 0), method: :post, remote: true do %>
+              <!-- <i class="fa fa-heart-o"><%= blog.favorites.count %>いいね</i> -->
+              <span class="glyphicon glyphicon-heart-empty"><%= blog.favorites.count %>いいね</span>
+            <% end %>
+          <% end %>
+        <% end %>
 
         <% if current_user == blog.user %>
           <i class="fa fa-heart"><%= blog.favorites.count %>いいね</i>
@@ -50,4 +48,7 @@
 <% end %>
 
 
-<!-- 26,27,40 -->
+
+
+
+

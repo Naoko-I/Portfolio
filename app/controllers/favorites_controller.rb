@@ -11,15 +11,15 @@ class FavoritesController < ApplicationController
   	@blog = Blog.find(params[:blog_id])
   	favorite = @blog.favorites.new(user_id: current_user.id)
   	favorite.save
-    redirect_to request.referer
+    # redirect_to request.referer
   end
 
   def destroy
   	@blog = Blog.find(params[:blog_id])
     favorite = current_user.favorites.find_by(blog_id: @blog.id)
     favorite.destroy
-    flash[:success] = "お気に入りを削除しました"
-    redirect_to request.referer
+    # flash[:success] = "お気に入りを削除しました"
+    # redirect_to request.referer
   end
 
   private
@@ -32,4 +32,3 @@ class FavoritesController < ApplicationController
   	   end
   	end
 end
-
