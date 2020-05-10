@@ -26,15 +26,16 @@
         <% if current_user != blog.user %>
           <% if blog.favorited_by?(current_user) %>
             <%= link_to blog_favorites_path(blog, redirect_id: 0), method: :delete, remote: true do %>
-              <!-- <i class="fa fa-heart" style="color: red;"><%= blog.favorites.count%>いいね</i> -->
-              <span class="glyphicon glyphicon-heart"><%= blog.favorites.count%>いいね</span>
+              <i class="fa fa-heart" style="color: red;"><%= blog.favorites.count%>いいね</i>
             <% end %>
           <% elsif %>
             <%= link_to blog_favorites_path(blog, redirect_id: 0), method: :post, remote: true do %>
-              <!-- <i class="fa fa-heart-o"><%= blog.favorites.count %>いいね</i> -->
-              <span class="glyphicon glyphicon-heart-empty"><%= blog.favorites.count %>いいね</span>
+              <i class="fa fa-heart-o"><%= blog.favorites.count %>いいね</i>
             <% end %>
           <% end %>
+        <% end %>
+        <% if current_user == blog.user %>
+          <i class="fa fa-heart"><%= blog.favorites.count %>いいね</i>
         <% end %>
 
         <% if current_user == blog.user %>
@@ -46,9 +47,4 @@
     </div>
   </article>
 <% end %>
-
-
-
-
-
 

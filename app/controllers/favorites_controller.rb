@@ -18,7 +18,7 @@ class FavoritesController < ApplicationController
   	@blog = Blog.find(params[:blog_id])
     favorite = current_user.favorites.find_by(blog_id: @blog.id)
     favorite.destroy
-    # flash[:success] = "お気に入りを削除しました"
+    flash[:success] = "お気に入りを削除しました"
     # redirect_to request.referer
   end
 
