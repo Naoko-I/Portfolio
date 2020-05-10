@@ -8,7 +8,7 @@ class FavoritesController < ApplicationController
   end
 
   def create
-  	@blog = Blog.find(params[:blog_id])
+    @blog = Blog.find(params[:blog_id])
   	favorite = @blog.favorites.new(user_id: current_user.id)
   	favorite.save
     # redirect_to request.referer

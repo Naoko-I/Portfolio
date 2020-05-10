@@ -4,25 +4,22 @@
 	<div class="row">
 		<div class="col-md-offset-3 col-md-6 col-md-offset-3 ">
 			<%= form_for(@blog) do |f| %>
-
 				<div class="common-user-box">
 					<div class="caption-title">新規投稿</div>
 						<%= render 'blogs/error_messages' %>
-						<div class="field">
-							<%= f.label :写真を選択, class: "glyphicon glyphicon-camera" %>
-							<%= f.attachment_field :image, size:'200x250', format: 'jpeg' %>
-						</div>
+							<div class="field">
+								<%= f.label :写真を選択, class: "glyphicon glyphicon-camera" %>
+								<%= f.attachment_field :image, size:'200x250', format: 'jpeg' %>
+							</div>
 
-						<div class="field">
-							<%= f.label :本文を入力 %>
-	    				<%= f.text_area :body, size: "70x10" %>
-	    			</div>
+							<div class="field">
+								<%= f.label :本文を入力 %>
+		    				<%= f.text_area :body, size: "70x10" %>
+		    			</div>
 
-						<div class="caption-submit">
-							<%= f.submit "投稿する", class: "btn btn-primary", method: :post, "data-confirm" => "この内容で投稿しますか？" %>
-								<!-- 入力エラーの場合バリデーションかエラー文 -->
-						</div>
-					</div>
+							<div class="caption-submit">
+								<%= f.submit "投稿する", class: "btn btn-primary", method: :post, "data-confirm" => "この内容で投稿しますか？" %>
+							</div>
 				</div>
 			<% end %>
 		</div>

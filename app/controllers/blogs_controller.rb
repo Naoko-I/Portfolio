@@ -16,10 +16,10 @@ class BlogsController < ApplicationController
     @blog = Blog.new(blog_params)
     @blog.user_id = current_user.id
     if @blog.save
-      flash[:success] = "投稿が完了しました"
-      redirect_to blogs_path
+       flash[:success] = "投稿が完了しました"
+       redirect_to blogs_path
     else
-      render :new
+       render :new
     end
   end
 
@@ -37,12 +37,12 @@ class BlogsController < ApplicationController
   def update
     @blog = Blog.find(params[:id])
     if @blog.update(blog_params)
-      flash[:success] = "投稿内容を更新しました"
-      redirect_to blogs_path(@blog)
+       flash[:success] = "投稿内容を更新しました"
+       redirect_to blogs_path(@blog)
     else
-      @blog_comment = BlogComment.new
-      @blog_comments = @blog.blog_comments.order(created_at: :desc)
-      render :show
+       @blog_comment = BlogComment.new
+       @blog_comments = @blog.blog_comments.order(created_at: :desc)
+       render :show
     end
   end
 

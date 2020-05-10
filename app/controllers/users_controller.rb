@@ -19,18 +19,18 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:success] = "プロフィールを更新しました"
-      redirect_to blogs_path
+       flash[:success] = "プロフィールを更新しました"
+       redirect_to blogs_path
     else
-      render :edit
+       render :edit
     end
   end
 
   def destroy
     @user = User.find(params[:id])
     if @user.destroy
-      sign_out user
-      redirect_to root_path
+       sign_out user
+       redirect_to root_path
     end
   end
 

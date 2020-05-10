@@ -11,9 +11,9 @@ class BlogCommentsController < ApplicationController
     # user = User.find(params[:user_id])
     @blog_comment.user_id = current_user.id
     if @blog_comment.save
-      flash[:success] = "コメントを投稿しました"
-      redirect_to request.referer
-     else
+       flash[:success] = "コメントを投稿しました"
+       redirect_to request.referer
+    else
        redirect_to request.referer
     end
   end
@@ -21,7 +21,7 @@ class BlogCommentsController < ApplicationController
   def destroy
     @blog_comment = BlogComment.find(params[:blog_id])
     if @blog_comment.user != current_user
-      redirect_to request.referer
+       redirect_to request.referer
     end
     @blog_comment.destroy
     flash[:success] = "コメントを削除しました"
