@@ -53,6 +53,10 @@ a:hover {
   color: #000;
 }
 
+p {
+  text-decoration: none;
+}
+
 .error_explanation {
   color: #FF0000;
 }
@@ -163,10 +167,10 @@ header {
   width: 100%;
   height: 100px;
   padding: 5px 40px;
-  /*position: fixed;*/
   color: #fff;
   background-image: image-url("kaffee-meister-XhWntGj2N98-unsplash");
   background-size: cover;
+  /*position: fixed;*/
  }
 
 .logo {
@@ -232,7 +236,9 @@ article {
   }
 }
 
+
 .sidebar-right {
+  /*width : 25%;*/
   padding-left: 15px;
   th {
     width: 100px;
@@ -466,6 +472,4 @@ article {
     padding-right: 10px;
   }
 }
-
-
 

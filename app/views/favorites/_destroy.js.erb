@@ -1,6 +1,6 @@
-// 未編集
-// if (location.pathname == '/blogs') {
-  // $(".blog_<%= @blog.id %>").html("<%= j(render 'users/blog',  blog: @blog ) %>")
-// } else {
-  // $(".blog_<%= @blog.id %>").html("<%= j(render 'users/show',  blog: @blog ) %>")
-// }
+// 編入未
+if (location.pathname == '/books') {
+  $(".book_<%= @book.id %>").html("<%= j(render 'books/book',  book: @book ) %>")
+} else {
+  $(".book_<%= @book.id %>").html("<%= j(render 'books/detail',  book: @book ) %>")
+}
