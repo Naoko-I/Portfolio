@@ -1,16 +1,16 @@
 <!-- users/_blogs.html.erb ℓ26-36行目 -->
-<% if current_user != blog.user %>
-  <% if blog.favorited_by?(current_user) %>
-    <%= link_to blog_favorites_path(blog, redirect_id: 0), method: :delete, remote: true do %>
-      <i class="fa fa-heart" style="color: red;"><%= blog.favorites.count%>いいね</i>
-    <% end %>
-  <% elsif %>
-    <%= link_to blog_favorites_path(blog, redirect_id: 0), method: :post, remote: true do %>
-      <i class="fa fa-heart-o"><%= blog.favorites.count %>いいね</i>
+<% if user_signed_in? %>
+  <% if current_user != blog.user %>
+    <% if blog.favorited_by?(current_user) %>
+      <p><span>いいね解除: </span><%=link_to blog.favorites.count, blog_favorites_path(blog.id), method: :delete, remote: true %></p>
+    <% else %>
+      <p><span>いいね登録: </span><%=link_to blog.favorites.count, blog_favorites_path(blog.id), method: :post, remote: true %></p>
     <% end %>
   <% end %>
-<% end %>
 <!-- current_userがログイン状態の場合、自分が投稿したblogのハートは黒塗りで表示 -->
-<% if current_user == blog.user %>
-  <i class="fa fa-heart"><%= blog.favorites.count %>いいね</i>
+  <% if current_user == blog.user %>
+    <i class="fa fa-heart"><%= blog.favorites.count %>いいね</i>
+  <% end %>
 <% end %>
+
+
