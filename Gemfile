@@ -71,7 +71,7 @@ gem 'jquery-rails'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 # ページング機能
-gem 'kaminari','~> 1.1.1'
+gem 'kaminari','~> 1.2.1'
 #検索機能
 gem 'ransack'
 #MySQL(デプロイ用)
